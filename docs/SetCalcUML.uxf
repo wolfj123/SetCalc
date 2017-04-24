@@ -30,7 +30,7 @@
 + Real(double value)
 
 + transformAdd(Numeric n) : Real
-+ transformMul(Numeric n) : Real
++ transformMul(Numeric n) : Real //Ariel
 
 + toString() : string
 + equals() : boolean</panel_attributes>
@@ -88,7 +88,7 @@
 + Rational(int a, int b)
 
 + transformAdd(Numeric n) : Numeric
-+ transformMul(Numeric n) : Numeric
++ transformMul(Numeric n) : Numeric   //Ariel
 + convertToDouble() : double
 
 - transformAdd(Real n) : Real
@@ -118,8 +118,8 @@
     <coordinates>
       <x>24</x>
       <y>168</y>
-      <w>216</w>
-      <h>248</h>
+      <w>232</w>
+      <h>264</h>
     </coordinates>
     <panel_attributes>_Set: Class_
 --
@@ -127,7 +127,7 @@
 --
 + Set() : Set
 
-+ insert(Element e) : Set   //do not insert duplicates
++ insert(Element e) : Set   //do not insert duplicates  ///Ariel
 + Set remove(Element e) : Set
 + size() : int
 + union(Set s) : Set
@@ -170,8 +170,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>48</x>
-      <y>448</y>
+      <x>32</x>
+      <y>480</y>
       <w>384</w>
       <h>152</h>
     </coordinates>
@@ -181,19 +181,6 @@
 - sanitizeString(string input) : String[]  //remove spaces and seperate it to commands
 - interpertator(String[] input) : void   //constructs and runs Commands
 </panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>440</x>
-      <y>440</y>
-      <w>304</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>_Command: Interface_
---
-+ run(String[] args) : Object //checks validity first</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
