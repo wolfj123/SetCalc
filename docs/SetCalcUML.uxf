@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>240</x>
+      <y>0</y>
+      <w>192</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>_Element: Interface_
+--
++ transformAdd(Numeric n) : Element
++ transformMul(Numeric n) : Element</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>264</x>
+      <y>184</y>
+      <w>200</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>_ Real : Class_
+--
++ double value
+--
++ Real(double value)
+
++ transformAdd(Numeric n) : Real
++ transformMul(Numeric n) : Real
+
++ toString() : string
++ equals() : boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>344</x>
+      <y>96</y>
+      <w>224</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>_ Numeric : Interface_
+--
++ transformAdd(Numeric n) : Numeric
++ transformMul(Numeric n) : Numeric</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>368</x>
+      <y>160</y>
+      <w>80</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>336</x>
+      <y>56</y>
+      <w>136</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>480</x>
+      <y>184</y>
+      <w>224</w>
+      <h>224</h>
+    </coordinates>
+    <panel_attributes>_ Rational : Class_
+--
+&lt;&lt;get/set&gt;&gt; - a : int
+&lt;&lt;get/set&gt;&gt; - b : int
+--
++ Rational(int a, int b)
+
++ transformAdd(Numeric n) : Numeric
++ transformMul(Numeric n) : Numeric
++ convertToDouble() : double
+
+- transformAdd(Real n) : Real
+- transformMul(Real n) : Real
+- transformAdd(Rational n) : Rational
+- transformMul(Rational n) : Rational
+
++ toString() : string
++ equals() : boolean
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>464</x>
+      <y>160</y>
+      <w>144</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;160.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>24</x>
+      <y>168</y>
+      <w>216</w>
+      <h>248</h>
+    </coordinates>
+    <panel_attributes>_Set: Class_
+--
+ - eList : List&lt;Element&gt;
+--
++ Set() : Set
+
++ insert(Element e) : Set   //do not insert duplicates
++ Set remove(Element e) : Set
++ size() : int
++ union(Set s) : Set
++ intersect(Set s) : Set
++ difference(Set s) : Set
++ power() : Set
++ contains(Set s) : boolean
++ member(Element e) : boolean  
++ deepExistence(Element e) : boolean
++ transformAdd(Numeric n) : Set
++ transformMul(Numeric n) : Set
+
++ toString() : string 
++ equals() : boolean
+ </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>128</x>
+      <y>56</y>
+      <w>208</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>240.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>64</x>
+      <y>32</y>
+      <w>192</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;170.0;10.0;10.0;220.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>48</x>
+      <y>448</y>
+      <w>384</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>_CLI: Main_
+--
+
+- sanitizeString(string input) : String[]  //remove spaces and seperate it to commands
+- interpertator(String[] input) : void   //constructs and runs Commands
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>440</y>
+      <w>304</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>_Command: Interface_
+--
++ run(String[] args) : Object //checks validity first</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

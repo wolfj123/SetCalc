@@ -1,0 +1,7 @@
+how to powerSet
+
+new set;
+newSet.union( newSet.powerSet(set chosen with element, i+1))
+newSet.union( newSet.powerSet(set chosen without element, i+1))
+
+return newSet
