@@ -125,7 +125,7 @@
     </coordinates>
     <panel_attributes>_Set: Class_
 --
- - eList : List&lt;Element&gt;
+ - list : List&lt;Element&gt;
 --
 + Set() : Set
 

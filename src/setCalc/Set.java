@@ -1,15 +1,20 @@
 package setCalc;
 
+import java.util.List;
+
 class Set implements Element {
+	
+	private List<Element> list;
 	
 	public Set insert(Element e) {
 		// TODO Auto-generated method stub
+		//this method mustn't insert an element if it is already in the list
 		return null;
 	}
 	
 	public Set remove(Element e) {
-		// TODO Auto-generated method stub
-		return null;
+		list.remove(e);
+		return this;
 	}
 	
 	public int size() {
@@ -18,8 +23,10 @@ class Set implements Element {
 	}
 	
 	public Set union(Set s) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Element> otherList = s.list;
+		for(Element e : otherList)
+			insert(e);
+		return this;
 	}
 	
 	public Set intersect(Set s) {
@@ -28,8 +35,10 @@ class Set implements Element {
 	}
 	
 	public  Set difference(Set s) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Element> otherList = s.list;
+		for(Element e : otherList)
+			remove(e);
+		return this;
 	}
 	
 	public  Set power() {
@@ -38,8 +47,11 @@ class Set implements Element {
 	}
 	
 	public boolean contains(Set s) {
-		// TODO Auto-generated method stub
-		return false;
+		List<Element> otherList = s.list;
+		for(Element e : otherList)
+			if(!(list.contains(e)))
+				return false;
+		return true;
 	}
 	
 	public boolean member(Element e) {
@@ -48,7 +60,15 @@ class Set implements Element {
 	}
 	
 	public boolean deepExistence(Element e) {
-		// TODO Auto-generated method stub
+		for(Element el : list){
+			if(el.equals(e))
+				return true;
+			else if(el instanceof Set){
+				Set elSet = (Set) el;
+				if(elSet.deepExistence(e))
+					return true;
+			}
+		}
 		return false;
 	}
 	
@@ -66,13 +86,21 @@ class Set implements Element {
 	
 	@Override
 	public String toString(){
-		// TODO Auto-generated method stub
-		return null;
+		String output ="{";
+		for (Element e : list){
+			output+=e.toString();
+			output+=",";
+		}
+		output=output.substring(0,output.length());
+		output+="}";
+		return output;
 	}
 	
 	@Override
 	public boolean equals(Object other){
-		// TODO Auto-generated method stub
-		return false;
+		if(!(other instanceof Set))
+			return false;
+		List<Element> otherList = ((Set) other).list;
+		return list.equals(otherList);
 	}
 }
