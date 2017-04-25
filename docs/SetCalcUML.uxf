@@ -31,6 +31,7 @@
 
 + transformAdd(Numeric n) : Real
 + transformMul(Numeric n) : Real //Ariel
++ double convertToDouble() : double
 
 + toString() : string
 + equals() : boolean</panel_attributes>
@@ -47,7 +48,8 @@
     <panel_attributes>_ Numeric : Interface_
 --
 + transformAdd(Numeric n) : Numeric
-+ transformMul(Numeric n) : Numeric</panel_attributes>
++ transformMul(Numeric n) : Numeric
++ double convertToDouble() : double</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
