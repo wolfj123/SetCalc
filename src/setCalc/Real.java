@@ -1,11 +1,15 @@
 package setCalc;
 
 class Real implements Numeric {
-
+	private double value;
+	
+	public Real(double value){
+		this.value = value;
+	}
+	
 	@Override
 	public Real transformAdd(Numeric n) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Real(value + n.convertToDouble());
 	}
 
 	@Override
@@ -13,6 +17,19 @@ class Real implements Numeric {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public double convertToDouble(){
+		return getValue();
+	}
+	
+	public double getValue(){
+		return value;
+	}
+	
+	public void setValue(double value){
+		this.value = value;
+	}
+	
 	
 	@Override
 	public String toString(){
