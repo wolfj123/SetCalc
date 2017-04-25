@@ -39,7 +39,9 @@ class Real implements Numeric {
 	
 	@Override
 	public boolean equals(Object other){
-		// TODO Auto-generated method stub
-		return false;
+		if(!(other instanceof Real))
+			return false;
+		Real otherReal = (Real) other;
+		return getValue()==otherReal.getValue();
 	}
 }
