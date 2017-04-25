@@ -1,6 +1,6 @@
 package setCalc;
 
-class Set implements Numeric {
+class Set implements Element {
 	
 	public Set insert(Element e) {
 		// TODO Auto-generated method stub
