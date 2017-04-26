@@ -1,47 +1,46 @@
 package setCalc;
 
 class Real implements Numeric {
-	private double value;
+	private double _value;
 	
-	public Real(double value){
-		this.value = value;
+	public Real(double _value){
+		this._value = _value;
 	}
 	
 	@Override
 	public Real transformAdd(Numeric n) {
-		return new Real(value + n.convertToDouble());
+		return new Real(_value + n.convertToDouble());
 	}
 
 	@Override
 	public Real transformMul(Numeric n) {
 		Real ans;
 		if (n instanceof Real)// in case of two real numbers
-			ans = new Real(this.getValue()*((Real)(n)).getValue());
+			_value*=((Real)(n)).get_value();
 		else
 		{
 			double num=n.convertToDouble();
-			ans = new Real(this.getValue()*num);
+			_value*=num;
 		}
-		return ans;
+		return this;
 	}
 	
 	public double convertToDouble(){
-		return getValue();
+		return get_value();
 	}
 	
-	public double getValue(){
-		return value;
+	public double get_value(){
+		return _value;
 	}
 	
-	public void setValue(double value){
-		this.value = value;
+	public void set_value(double _value){
+		this._value = _value;
 	}
 	
 	
 	@Override
 	public String toString(){
-		// TODO Auto-generated method stub
-		return null;
+		return String.valueOf(_value);
 	}
 	
 	@Override
@@ -49,6 +48,6 @@ class Real implements Numeric {
 		if(!(other instanceof Real))
 			return false;
 		Real otherReal = (Real) other;
-		return getValue()==otherReal.getValue();
+		return get_value()==otherReal.get_value();
 	}
 }
