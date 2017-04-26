@@ -4,7 +4,7 @@ import java.util.List;
 
 class Set implements Element {
 	
-	private List<Element> list;
+	private List<Element> _list;
 	
 	public Set insert(Element e) {
 		// TODO Auto-generated method stub
@@ -13,7 +13,7 @@ class Set implements Element {
 	}
 	
 	public Set remove(Element e) {
-		list.remove(e);
+		_list.remove(e);
 		return this;
 	}
 	
@@ -23,7 +23,7 @@ class Set implements Element {
 	}
 	
 	public Set union(Set s) {
-		List<Element> otherList = s.list;
+		List<Element> otherList = s._list;
 		for(Element e : otherList)
 			insert(e);
 		return this;
@@ -35,7 +35,7 @@ class Set implements Element {
 	}
 	
 	public  Set difference(Set s) {
-		List<Element> otherList = s.list;
+		List<Element> otherList = s._list;
 		for(Element e : otherList)
 			remove(e);
 		return this;
@@ -47,9 +47,9 @@ class Set implements Element {
 	}
 	
 	public boolean contains(Set s) {
-		List<Element> otherList = s.list;
+		List<Element> otherList = s._list;
 		for(Element e : otherList)
-			if(!(list.contains(e)))
+			if(!(_list.contains(e)))
 				return false;
 		return true;
 	}
@@ -60,7 +60,7 @@ class Set implements Element {
 	}
 	
 	public boolean deepExistence(Element e) {
-		for(Element el : list){
+		for(Element el : _list){
 			if(el.equals(e))
 				return true;
 			else if(el instanceof Set){
@@ -74,8 +74,9 @@ class Set implements Element {
 	
 	@Override
 	public Set transformAdd(Numeric n) {
-		// TODO Auto-generated method stub
-		return null;
+		for(Element e : _list)
+			e.transformAdd(n);
+		return this;
 	}
 
 	@Override
@@ -87,7 +88,7 @@ class Set implements Element {
 	@Override
 	public String toString(){
 		String output ="{";
-		for (Element e : list){
+		for (Element e : _list){
 			output+=e.toString();
 			output+=",";
 		}
@@ -100,7 +101,7 @@ class Set implements Element {
 	public boolean equals(Object other){
 		if(!(other instanceof Set))
 			return false;
-		List<Element> otherList = ((Set) other).list;
-		return list.equals(otherList);
+		List<Element> otherList = ((Set) other)._list;
+		return _list.equals(otherList);
 	}
 }
