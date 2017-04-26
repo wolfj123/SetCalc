@@ -1,16 +1,16 @@
 package setCalc;
 
 class Rational implements Numeric {
-	private int a;
-	private int b;
+	private int _a;
+	private int _b;
 	
 	public Rational(int a, int b){
 		if(b==0)
 			throw new IllegalArgumentException("Rational cannot have 0 as denominator");
 		
 		int gcd = gcd(a,b);
-		this.a = a/gcd;
-		this.b = b/gcd;
+		this._a = a/gcd;
+		this._b = b/gcd;
 	}
 	
 	@Override
@@ -38,8 +38,9 @@ class Rational implements Numeric {
 	}
 	
 	private Rational transformAdd(Rational n) {
-		return new Rational(getNumerator() + n.getNumerator(), 
-				getDenominator() + n.getDenominator());
+		_a =getNumerator() + n.getNumerator(); 
+		_b = getDenominator() + n.getDenominator();
+		return this;
 	}
 
 	private Rational transformMul(Rational n) {
@@ -49,15 +50,15 @@ class Rational implements Numeric {
 	
 	@Override
 	public double convertToDouble(){
-		return (double)a/(double)b;
+		return (double)_a/(double)_b;
 	}
 	
 	public int getNumerator(){
-		return a;
+		return _a;
 	}
 	
 	public int getDenominator(){
-		return b;
+		return _b;
 	}
 	
 	

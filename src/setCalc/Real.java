@@ -1,15 +1,16 @@
 package setCalc;
 
 class Real implements Numeric {
-	private double value;
+	private double _value;
 	
 	public Real(double value){
-		this.value = value;
+		this._value = value;
 	}
 	
 	@Override
 	public Real transformAdd(Numeric n) {
-		return new Real(value + n.convertToDouble());
+		_value = _value + n.convertToDouble();
+		return this;
 	}
 
 	@Override
@@ -23,11 +24,11 @@ class Real implements Numeric {
 	}
 	
 	public double getValue(){
-		return value;
+		return _value;
 	}
 	
 	public void setValue(double value){
-		this.value = value;
+		this._value = value;
 	}
 	
 	
