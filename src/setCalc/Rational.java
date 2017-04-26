@@ -43,8 +43,10 @@ class Rational implements Numeric {
 	}
 
 	private Rational transformMul(Rational n) {
-		// TODO Auto-generated method stub
-		return null;
+		int ansA = getNumerator()*n.getNumerator(); // calculate numerator
+		int ansB = getDenominator()*n.getDenominator(); // calculate denominator
+		
+		return (new Rational(ansA, ansB));
 	}
 	
 	@Override

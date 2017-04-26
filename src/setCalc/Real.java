@@ -14,8 +14,15 @@ class Real implements Numeric {
 
 	@Override
 	public Real transformMul(Numeric n) {
-		// TODO Auto-generated method stub
-		return null;
+		Real ans;
+		if (n instanceof Real)// in case of two real numbers
+			ans = new Real(this.getValue()*((Real)(n)).getValue());
+		else
+		{
+			double num=n.convertToDouble();
+			ans = new Real(this.getValue()*num);
+		}
+		return ans;
 	}
 	
 	public double convertToDouble(){
