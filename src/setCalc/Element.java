@@ -1,6 +1,6 @@
 package setCalc;
 
-interface Element {
+public interface Element {
 	
 	public Element transformAdd(Numeric n);
 	

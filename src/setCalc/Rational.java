@@ -1,6 +1,6 @@
 package setCalc;
 
-class Rational implements Numeric {
+public class Rational implements Numeric {
 	private int _a;
 	private int _b;
 	

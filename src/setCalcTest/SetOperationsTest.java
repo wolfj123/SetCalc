@@ -1,5 +1,6 @@
 package setCalcTest;
 
+import setCalc.Set;
 import static org.junit.Assert.*;
 
 import org.junit.After;
@@ -10,6 +11,9 @@ public class SetOperationsTest {
 
 	@Before
 	public void setUp() throws Exception {
+		Set testSet = new Set()
+		
+		
 	}
 
 	@After

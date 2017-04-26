@@ -1,6 +1,6 @@
 package setCalc;
 
-interface Numeric extends Element{
+public interface Numeric extends Element{
 	
 	public Numeric transformAdd(Numeric n);
 	

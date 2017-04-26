@@ -2,7 +2,7 @@ package setCalc;
 
 import java.util.List;
 
-class Set implements Element {
+public class Set implements Element {
 	
 	private List<Element> _list;
 	

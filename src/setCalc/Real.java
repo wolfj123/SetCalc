@@ -1,6 +1,6 @@
 package setCalc;
 
-class Real implements Numeric {
+public class Real implements Numeric {
 	private double _value;
 	
 	public Real(double value){
