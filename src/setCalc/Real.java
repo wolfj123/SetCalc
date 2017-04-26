@@ -15,27 +15,33 @@ class Real implements Numeric {
 
 	@Override
 	public Real transformMul(Numeric n) {
-		// TODO Auto-generated method stub
-		return null;
+		Real ans;
+		if (n instanceof Real)// in case of two real numbers
+			_value*=((Real)(n)).get_value();
+		else
+		{
+			double num=n.convertToDouble();
+			_value*=num;
+		}
+		return this;
 	}
 	
 	public double convertToDouble(){
-		return getValue();
+		return get_value();
 	}
 	
-	public double getValue(){
+	public double get_value(){
 		return _value;
 	}
 	
-	public void setValue(double value){
+	public void set_value(double value){
 		this._value = value;
 	}
 	
 	
 	@Override
 	public String toString(){
-		// TODO Auto-generated method stub
-		return null;
+		return String.valueOf(_value);
 	}
 	
 	@Override
@@ -43,6 +49,6 @@ class Real implements Numeric {
 		if(!(other instanceof Real))
 			return false;
 		Real otherReal = (Real) other;
-		return getValue()==otherReal.getValue();
+		return get_value()==otherReal.get_value();
 	}
 }

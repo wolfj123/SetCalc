@@ -7,9 +7,9 @@ class Set implements Element {
 	private List<Element> _list;
 	
 	public Set insert(Element e) {
-		// TODO Auto-generated method stub
-		//this method mustn't insert an element if it is already in the list
-		return null;
+		if (!_list.contains(e)) // check if an object already exists
+			_list.add(e);
+		return this;
 	}
 	
 	public Set remove(Element e) {
@@ -18,8 +18,7 @@ class Set implements Element {
 	}
 	
 	public int size() {
-		// TODO Auto-generated method stub
-		return -1;
+		return _list.size();
 	}
 	
 	public Set union(Set s) {
@@ -30,8 +29,14 @@ class Set implements Element {
 	}
 	
 	public Set intersect(Set s) {
-		// TODO Auto-generated method stub
-		return null;
+
+		for (Element e : _list)
+		{
+			if (!s.member(e))
+				_list.remove(e);
+		}
+		
+		return this;
 	}
 	
 	public  Set difference(Set s) {

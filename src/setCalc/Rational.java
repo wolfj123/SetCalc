@@ -38,14 +38,16 @@ class Rational implements Numeric {
 	}
 	
 	private Rational transformAdd(Rational n) {
-		_a =getNumerator() + n.getNumerator(); 
+		_a = getNumerator() + n.getNumerator(); 
 		_b = getDenominator() + n.getDenominator();
 		return this;
 	}
 
 	private Rational transformMul(Rational n) {
-		// TODO Auto-generated method stub
-		return null;
+		_a = getNumerator()*n.getNumerator(); // calculate numerator
+		_b = getDenominator()*n.getDenominator(); // calculate denominator
+		
+		return this;
 	}
 	
 	@Override
@@ -64,8 +66,10 @@ class Rational implements Numeric {
 	
 	@Override
 	public String toString(){
-		// TODO Auto-generated method stub
-		return null;
+		if (_b!=1)
+			return (_a+"/"+_b);
+		else
+			return (String.valueOf(_a));
 	}
 	
 	@Override
