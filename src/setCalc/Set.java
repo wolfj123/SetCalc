@@ -62,26 +62,30 @@ public class Set implements Element {
 	public  Set power() {
 		Set without = new Set(new Set());
 		Set with = new Set(new Set (_list.get(0)));
-
 		
-		Set ans = Power(without, 1, this).union(Power(with, 1, this));
+		Set ans = Power(without, 1 );
+		ans = ans.union(Power(with, 1));
 		
 		return ans;
 	}
 	
-	private Set Power(Set s ,int index,Set originalSet){
-		if (index>originalSet._list.size())
+	private Set Power(Set s ,int index){
+		if (index>=_list.size())
 			return s;
-		Set without = Power(s, index+1, originalSet);
-		Set add = new Set (originalSet._list.get(index));
+		Set without = Power(s, index+1);
+		Set add = new Set (new Set (_list.get(index)));
 		Set with = new Set();
 		for (Element e : s._list){
-			((Set)e).union(add);
+			with.insert(e);
 		}
+		for (Element e : with._list){
+			with = with.insert(((Set)e).union(add));
+		}
+		with = with.insert(add);
 		
-		Set ans = Power(with,index+1,originalSet);
-		
-		return ans.union(without);
+		Set ans = Power(with,index+1);
+		ans = ans.union(without);
+		return ans;
 		
 	}
 	
