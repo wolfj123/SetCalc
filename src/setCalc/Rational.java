@@ -29,10 +29,12 @@ public class Rational implements Numeric {
 			return transformMul((Real)n);
 	}
 	
+	//This method does not change "this". it create a new Real and returns it
 	private Real transformAdd(Real n) {
 		return n.transformAdd(this);
 	}
 
+	//This method does not change "this". it create a new Real and returns it
 	private Real transformMul(Real n) {
 		return n.transformMul(this);
 	}
