@@ -75,13 +75,15 @@ public class Set implements Element {
 		Set without = Power(s, index+1);
 		Set add = new Set (new Set (_list.get(index)));
 		Set with = new Set();
-		for (Element e : s._list){
+		// need to figure out which is right
+		/*for (Element e : s._list){
 			with.insert(e);
-		}
+		}*/
+		with =s ;
 		for (Element e : with._list){
-			with = with.insert(((Set)e).union(add));
+			with.insert((((Set)e).union(add)));
 		}
-		with = with.insert(add);
+		with.insert(add);
 		
 		Set ans = Power(with,index+1);
 		ans = ans.union(without);
