@@ -60,8 +60,17 @@ public class Set implements Element {
 	}
 	
 	public boolean member(Element e) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean ans= false;
+		for (Element thisElements : _list)
+		{
+			if (thisElements.equals(e))
+			{
+				ans = true;
+				break;
+			}
+		}
+		
+		return ans;
 	}
 	
 	public boolean deepExistence(Element e) {
@@ -88,8 +97,13 @@ public class Set implements Element {
 
 	@Override
 	public Set transformMul(Numeric n) {
-		// TODO Auto-generated method stub
-		return null;
+		Set ansSet = new Set();
+		for (Element e : _list)
+		{
+			ansSet.insert(e.transformMul(n));
+		}
+		
+		return ansSet;
 	}
 	
 	@Override
