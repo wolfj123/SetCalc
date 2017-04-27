@@ -1,16 +1,29 @@
 package setCalc;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Set implements Element {
 	
 	private List<Element> _list;
+
+	public Set (){
+		_list= new ArrayList<Element>();
+	}
+	
+	
+	public Set (Element e){
+		super();
+		_list.add(e);
+	}
 	
 	public Set insert(Element e) {
 		if (!_list.contains(e)) // check if an object already exists
 			_list.add(e);
 		return this;
 	}
+	
+
 	
 	public Set remove(Element e) {
 		_list.remove(e);
@@ -47,8 +60,29 @@ public class Set implements Element {
 	}
 	
 	public  Set power() {
-		// TODO Auto-generated method stub
-		return null;
+		Set without = new Set(new Set());
+		Set with = new Set(new Set (_list.get(0)));
+
+		
+		Set ans = Power(without, 1, this).union(Power(with, 1, this));
+		
+		return ans;
+	}
+	
+	private Set Power(Set s ,int index,Set originalSet){
+		if (index>originalSet._list.size())
+			return s;
+		Set without = Power(s, index+1, originalSet);
+		Set add = new Set (originalSet._list.get(index));
+		Set with = new Set();
+		for (Element e : s._list){
+			((Set)e).union(add);
+		}
+		
+		Set ans = Power(with,index+1,originalSet);
+		
+		return ans.union(without);
+		
 	}
 	
 	public boolean contains(Set s) {
