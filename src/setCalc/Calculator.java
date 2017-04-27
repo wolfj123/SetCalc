@@ -1,6 +1,6 @@
 package setCalc;
 
-import java.util.StringTokenizer;
+//import java.util.StringTokenizer;
 
 public class Calculator {
 
@@ -13,10 +13,25 @@ public class Calculator {
 	
 	
 	public void calc(String instruction){
-		StringTokenizer input = new StringTokenizer(instruction, " ");
+		//StringTokenizer input = new StringTokenizer(instruction, " ");
+		String[] commands = instruction.trim().split("\\s+");
+	}
+	
+	private boolean isValidString(String s){
+		if(s == null || s.length()==0) //is empty or null
+			return false;
+		
+		if(s.charAt(0)!='{' || s.charAt(s.length()-1)!='}') //is enclosed in {}
+			return false;
+		
+		String elements[] = s.substring(1, s.length()-2).split(",");
+		for (String e : elements){ //does not have legal elements
+			if()	
+		}
+
 		
 		
-		
+		return true;
 	}
 
 }
