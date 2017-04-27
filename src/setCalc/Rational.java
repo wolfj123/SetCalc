@@ -46,10 +46,10 @@ public class Rational implements Numeric {
 	}
 
 	private Rational transformMul(Rational n) {
-		_a = getNumerator()*n.getNumerator(); // calculate numerator
-		_b = getDenominator()*n.getDenominator(); // calculate denominator
+		int ansA = getNumerator()*n.getNumerator(); // calculate numerator
+		int ansB = getDenominator()*n.getDenominator(); // calculate denominator
 		
-		return this;
+		return new Rational (ansA,ansB);
 	}
 	
 	@Override

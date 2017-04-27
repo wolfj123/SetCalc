@@ -15,15 +15,15 @@ public class Real implements Numeric {
 
 	@Override
 	public Real transformMul(Numeric n) {
-		Real ans;
+		Double ans;
 		if (n instanceof Real)// in case of two real numbers
-			_value*=((Real)(n)).get_value();
+			ans=((Real)(n)).get_value()*_value;
 		else
 		{
 			double num=n.convertToDouble();
-			_value*=num;
+			ans=_value*num;
 		}
-		return this;
+		return new Real(ans);
 	}
 	
 	public double convertToDouble(){
