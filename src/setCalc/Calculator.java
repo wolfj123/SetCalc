@@ -17,21 +17,6 @@ public class Calculator {
 		String[] commands = instruction.trim().split("\\s+");
 	}
 	
-	private boolean isValidString(String s){
-		if(s == null || s.length()==0) //is empty or null
-			return false;
-		
-		if(s.charAt(0)!='{' || s.charAt(s.length()-1)!='}') //is enclosed in {}
-			return false;
-		
-		String elements[] = s.substring(1, s.length()-2).split(",");
-		for (String e : elements){ //does not have legal elements
-			if()	
-		}
 
-		
-		
-		return true;
-	}
 
 }
