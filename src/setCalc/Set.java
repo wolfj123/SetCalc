@@ -79,8 +79,10 @@ public class Set implements Element {
 	
 	@Override
 	public Set transformAdd(Numeric n) {
-		for(Element e : _list)
-			e.transformAdd(n);
+		for(int i=0; i<_list.size(); i=i+1){
+			Element curr = _list.get(i);
+			_list.set(i, curr.transformAdd(n));
+		}
 		return this;
 	}
 
