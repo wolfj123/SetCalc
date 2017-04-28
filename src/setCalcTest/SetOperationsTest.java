@@ -8,7 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.sun.xml.internal.ws.util.ReadAllStream;
+//import com.sun.xml.internal.ws.util.ReadAllStream;
 
 public class SetOperationsTest {
 	private Set _set;

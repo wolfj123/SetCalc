@@ -1,16 +1,31 @@
 package setCalc;
 
 import java.lang.reflect.Method;
+import java.util.Scanner;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
+//import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 
 //import java.util.StringTokenizer;
 
 public class Calculator {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
+		Scanner scan = new Scanner(System.in);
+		
+		//ask for user input and call calc(String instruction)
+		//while(true){
+			String instruction = scan.nextLine();
+			
+			//print(calc(instruction));
+			calc(instruction);
+		//}
+		
+		/*
+		 * Ariel's tests
+		*
+		*
+		 
 		Set _testSet = new Set (new Set());
 		System.out.println(_testSet);
 		Set _secondSet = new Set ((new Real(1)));
@@ -21,20 +36,30 @@ public class Calculator {
 		System.out.println(new Set().equals(new Real(1)));
 		System.out.println(_secondSet.power());
 		
-		//ask for user input and call calc(String instruction)
+		 */
+
+		
 
 	}
 	
 	
-	public void calc(String instruction){
+	public static void calc(String instruction){
 		//StringTokenizer input = new StringTokenizer(instruction, " ");
 		
 		String[] commands = instruction.trim().split("\\s+");
 		
 		/*THIS IS FOR FUN :) */
 		
-		Method m=this.getClass().getMethod(commands[0], String[]);
-		
+		try{
+			Class[] args1 = new Class[1];
+	        args1[0] = String[].class;
+			Method m = Calculator.class.getMethod(commands[0], args1);
+			m.invoke(null, commands);
+		}
+		catch (Exception e)
+        {
+			print("Unknow command");
+        }
 		
 		/*END OF FUN :( */
 		
@@ -96,73 +121,88 @@ public class Calculator {
 	}
 	
 	
-	public void size(String[] input){
+	static public String size(String[] input){
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	static public String contains(String[] input){
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	static public String member(String[] input){
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	static public String deepexistance(String[] input){
+		// TODO Auto-generated method stub
+				return null;
+	}
+	
+	static public String equals(String[] input){
+		// TODO Auto-generated method stub
+		return null;		
+	}
+	
+	static public String insert(String[] input){
+		// TODO Auto-generated method stub
+		return null;		
+	}
+	
+	static public String union(String[] input){
+		// TODO Auto-generated method stub
+		return null;		
+	}
+	
+	static public String remove(String[] input){
+		// TODO Auto-generated method stub
+		return null;		
+	}
+	
+	static public String intersect(String[] input){
+		// TODO Auto-generated method stub
+		return null;		
+	}
+	
+	static public String difference(String[] input){
+		// TODO Auto-generated method stub
+		return null;		
+	}
+	
+	static public String power(String[] input){
+		// TODO Auto-generated method stub
+		return null;		
+	}
+	
+	static public String transformAdd(String[] input){
+		// TODO Auto-generated method stub
+		return null;		
+	}
+	
+	static public String transformMul(String[] input){
+		// TODO Auto-generated method stub
+		return null;		
+	}
+	
+	static public String help(String[] input){
+		// TODO Auto-generated method stub
+		return null;		
+	}
+	
+	static public String bonus(String[] input){
+		// TODO Auto-generated method stub
+		return "test";
+	}
+	
+	static public void exit(String[] input){
 		
 	}
 	
-	public void contains(String[] input){
-		
-	}
-	
-	public void member(String[] input){
-		
-	}
-	
-	public void deepexistance(String[] input){
-		
-	}
-	
-	public void equals(String[] input){
-		
-	}
-	
-	public void insert(String[] input){
-		
-	}
-	
-	public void union(String[] input){
-		
-	}
-	
-	public void remove(String[] input){
-		
-	}
-	
-	public void intersect(String[] input){
-		
-	}
-	
-	public void difference(String[] input){
-		
-	}
-	
-	public void power(String[] input){
-		
-	}
-	
-	public void transformAdd(String[] input){
-		
-	}
-	
-	public void transformMul(String[] input){
-		
-	}
-	
-	public void help(String[] input){
-		
-	}
-	
-	public void bonus(String[] input){
-		
-	}
-	
-	public void exit(String[] input){
-		
-	}
 	
 	
-	
-	private void print(String s){
+	static private void print(String s){
 		System.out.println(s);
 	}
 	
