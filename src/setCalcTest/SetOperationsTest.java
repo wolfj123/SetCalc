@@ -8,6 +8,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.sun.xml.internal.ws.util.ReadAllStream;
+
 public class SetOperationsTest {
 	private Set _set;
 	
@@ -55,7 +57,22 @@ public class SetOperationsTest {
 
 	@Test
 	public void testRemove() {
-		fail("Not yet implemented");
+		Set answerSet = new Set ();
+		Numeric[] numbers = new Numeric[]{
+				new Real(0),
+				new Rational(2,4),
+				new Rational(5,1)
+			};
+		_set.remove(new Rational(1,2));
+		_set.remove(new Real(1));
+		_set.remove(new Real(4));
+		
+		for (Numeric n : numbers){
+			_set.insert(n);
+		} 
+		
+		Assert.assertEquals("the set sholuden't have 1, 1/2",answerSet.toString(), _set.toString());
+
 	}
 
 	@Test
@@ -65,17 +82,33 @@ public class SetOperationsTest {
 
 	@Test
 	public void testUnion() {
-		Set emtpySet = new Set();
-		Set set1 = new Set(); set1.insert(new Real(1));
+		// sets to unify
+		Set set1 = new Set (new Real (1));
+		Set set2 = new Set (new Rational(7, 2));
+		Set set3 = new Set (new Set ());
+		// unify sets
+		_set.union(set1);
+		_set.union(set2);
+		_set.union(set3);
+		// create right answer
+		Set answerSet = new Set ();
+		Numeric[] numbers = new Numeric[]{
+				new Real(0),
+				new Real(1),
+				new Rational(1,2),
+				new Rational(2,4),
+				new Rational(5,1),
+				new Rational(7, 2)
+			};
+		for (Numeric n : numbers){
+			_set.insert(n);
+		} 
+		answerSet.insert(new Set ());
 		
-		Set expectedUnionSet = new Set(); 
-		expectedUnionSet.insert(emtpySet); expectedUnionSet.insert(set1); 
-		
-		Set containEmpty = new Set(); containEmpty.insert(emtpySet);
-		
-		Assert.assertEquals("Union: sets should match",  expectedUnionSet, containEmpty.union(expectedUnionSet));
+		Assert.assertEquals("the union set shuld be: ",answerSet.toString(),_set.toString());
 	}
 	}
+
 
 	@Test
 	public void testIntersect() {
@@ -107,7 +140,26 @@ public class SetOperationsTest {
 
 	@Test
 	public void testDifference() {
-		fail("Not yet implemented");
+		Set correctAnsewerSet = new Set();
+		Numeric[] numbers = new Numeric[]{
+				new Real(0),
+				new Rational(1,2),
+				new Rational(5,1)
+			};
+			
+		for (Numeric n : numbers){
+			correctAnsewerSet.insert(n);
+		} 
+		
+		Set differSet = new Set ();
+		differSet.insert(new Real (1));
+		differSet.insert(new Rational (7,2));
+		differSet.insert(new Real (4));
+		
+		Set answerDiffer = _set.difference(differSet);
+		
+		Assert.assertEquals("the diiference dosen't work - answer should be "+ correctAnsewerSet + " actual answer is: "+ answerDiffer ,correctAnsewerSet, answerDiffer);
+
 	}
 
 	@Test
@@ -135,7 +187,19 @@ public class SetOperationsTest {
 
 	@Test
 	public void testContains() {
-		fail("Not yet implemented");
+		
+		Set check = new Set ();
+		Numeric[] numbers = new Numeric[]{
+				new Real(0),
+				new Rational(1,2),
+				new Rational(5,1)
+			};
+			
+		for (Numeric n : numbers){
+			check.insert(n);
+		} 
+		
+		Assert.assertEquals("answer should be true", true ,_set.contains(check));
 	}
 
 	@Test
@@ -146,12 +210,38 @@ public class SetOperationsTest {
 
 	@Test
 	public void testDeepExistence() {
-		fail("Not yet implemented");
+		_set.insert(new Set(new Real(3)));
+		
+		Assert.assertEquals("answer should be true", true, _set.deepExistence(new Real (3)));
 	}
 
 	@Test
 	public void testTransformAdd() {
-		fail("Not yet implemented");
+		Set answerSet = new Set();
+
+		Numeric[] numbersForAnswer = new Numeric[]{
+				new Real(1),
+				new Real(2),
+				new Real(1.5),
+			};
+		
+		for (Element e : numbersForAnswer){
+			answerSet.insert(e);
+		}
+		
+		_set = null;
+		_set = new Set();
+		Numeric[] numbers = new Numeric[]{
+				new Real(0),
+				new Real(1),
+				new Rational(1,2),
+			};
+		
+		for (Element e : numbers){
+			_set.insert(e);
+		}
+		
+		Assert.assertEquals("add dosen't work. answer should be "+answerSet +"" ,answerSet ,_set.transformAdd(new Real (1)));
 	}
 
 	@Test

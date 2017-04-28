@@ -11,6 +11,11 @@ public class Set implements Element {
 		_list= new Vector<Element>();
 	}
 	
+	public Set (Element e){
+		this ();
+		_list.add(e);
+	}
+	
 
 	public Set(String s){
 		if(!isValidString(s))
@@ -70,11 +75,7 @@ public class Set implements Element {
 		}
 		return true;
 	}
-	
-	public Set (Element e){
-		super();
-		_list.add(e);
-	}
+
 	
 	public Set insert(Element e) {
 		if (!_list.contains(e)) // check if an object already exists
@@ -147,7 +148,6 @@ public class Set implements Element {
 		Set ans = Power(with,index+1);
 		ans = ans.union(without);
 		return ans;
-		
 	}
 	
 	public boolean contains(Set s) {
