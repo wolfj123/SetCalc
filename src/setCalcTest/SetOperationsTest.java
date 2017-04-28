@@ -65,7 +65,16 @@ public class SetOperationsTest {
 
 	@Test
 	public void testUnion() {
-		fail("Not yet implemented");
+		Set emtpySet = new Set();
+		Set set1 = new Set(); set1.insert(new Real(1));
+		
+		Set expectedUnionSet = new Set(); 
+		expectedUnionSet.insert(emtpySet); expectedUnionSet.insert(set1); 
+		
+		Set containEmpty = new Set(); containEmpty.insert(emtpySet);
+		
+		Assert.assertEquals("Union: sets should match",  expectedUnionSet, containEmpty.union(expectedUnionSet));
+		System.out.println("test");
 	}
 
 	@Test

@@ -208,11 +208,14 @@ public class Set implements Element {
 	@Override
 	public String toString(){
 		String output ="{";
-		for (Element e : _list){
+
+		for(int i=0; i<_list.size(); i=i+1){
+			Element e = _list.get(i);
 			output+=e.toString();
-			output+=",";
+			if(i<_list.size()-1)
+				output+=",";
 		}
-		output=output.substring(0,output.length());
+		
 		output+="}";
 		return output;
 	}
