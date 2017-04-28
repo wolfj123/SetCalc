@@ -39,18 +39,14 @@ public class Calculator {
 	}
 	
 	
-	public static void calc(String instruction){
-		//StringTokenizer input = new StringTokenizer(instruction, " ");
-		
+	public static void calc(String instruction){		
 		String[] commands = instruction.trim().split("\\s+");
 		
-		//THIS IS FOR FUN :) 
-		Method m = null;
-		
-		try{
+		try
+		{
 			Class[] args1 = new Class[1];
 	        args1[0] = String[].class;
-			m = Calculator.class.getMethod(commands[0], new Class[]{String[].class});
+			Method m = Calculator.class.getMethod(commands[0], new Class[]{String[].class});
 			m.invoke(null, new Object[]{commands});
 		}
 		catch (Exception e)

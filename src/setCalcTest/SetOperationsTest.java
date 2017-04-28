@@ -49,7 +49,7 @@ public class SetOperationsTest {
 			};
 			
 		for (Numeric n : numbers){
-			_set.insert(n);
+			originalSet.insert(n);
 		} 
 		
 		Assert.assertEquals("Insert: duplicate insert should not affect Set",originalSet.toString(),_set.toString() );
@@ -60,7 +60,7 @@ public class SetOperationsTest {
 		Set answerSet = new Set ();
 		Numeric[] numbers = new Numeric[]{
 				new Real(0),
-				new Rational(2,4),
+				
 				new Rational(5,1)
 			};
 		_set.remove(new Rational(1,2));
@@ -68,7 +68,7 @@ public class SetOperationsTest {
 		_set.remove(new Real(4));
 		
 		for (Numeric n : numbers){
-			_set.insert(n);
+			answerSet.insert(n);
 		} 
 		
 		Assert.assertEquals("the set sholuden't have 1, 1/2",answerSet.toString(), _set.toString());
@@ -101,7 +101,7 @@ public class SetOperationsTest {
 				new Rational(7, 2)
 			};
 		for (Numeric n : numbers){
-			_set.insert(n);
+			answerSet.insert(n);
 		} 
 		answerSet.insert(new Set ());
 		
@@ -255,7 +255,7 @@ public class SetOperationsTest {
 			};
 			
 			for (Numeric n : numbers){
-				_set.insert(n);
+				finalSet.insert(n);
 			}
 		
 		Assert.assertEquals("TransformMul: set should be equal", finalSet,_set.transformMul(new Real(4)));
