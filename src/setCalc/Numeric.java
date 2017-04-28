@@ -1,10 +1,20 @@
 package setCalc;
 
-public interface Numeric extends Element{
+public abstract class Numeric implements Element{
 	
-	public Numeric transformAdd(Numeric n);
+	public abstract Numeric transformAdd(Numeric n);
 	
-	public Numeric transformMul(Numeric n);
+	public abstract Numeric transformMul(Numeric n);
 	
-	public double convertToDouble();
+	public abstract double convertToDouble();
+	
+	@Override
+	public boolean equals(Object other){
+		if(!(other instanceof Rational) & !(other instanceof Real))
+			return false;
+		else{
+			Numeric otherNum = (Numeric) other;
+			return convertToDouble()==otherNum.convertToDouble();
+		}
+	}
 }

@@ -1,7 +1,7 @@
 package setCalc;
 import java.util.regex.Pattern;
 
-public class Real implements Numeric {
+public class Real extends Numeric {
 	private double _value;
 	
 	public Real(double value){
@@ -61,6 +61,7 @@ public class Real implements Numeric {
 		return String.valueOf(_value);
 	}
 	
+	/*
 	@Override
 	public boolean equals(Object other){
 		if(!(other instanceof Real))
@@ -68,4 +69,16 @@ public class Real implements Numeric {
 		Real otherReal = (Real) other;
 		return get_value()==otherReal.get_value();
 	}
+	
+	
+	@Override
+	public boolean equals(Object other){
+		if(!(other instanceof Rational) & !(other instanceof Real))
+			return false;
+		else{
+			Numeric otherNum = (Numeric) other;
+			return convertToDouble()==otherNum.convertToDouble();
+		}
+	}
+	*/
 }
