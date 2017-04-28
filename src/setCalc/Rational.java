@@ -85,6 +85,17 @@ public class Rational implements Numeric {
 		return _b;
 	}
 	
+	public void setNumerator(int a){
+		int gcd = gcd(a,_b);
+		_a = a/gcd;
+		_b = _b/gcd;
+	}
+	
+	public void setDenominator(int b){
+		int gcd = gcd(_a,b);
+		_a = _a/gcd;
+		_b = b/gcd;
+	}
 	
 	@Override
 	public String toString(){
@@ -96,8 +107,11 @@ public class Rational implements Numeric {
 	
 	@Override
 	public boolean equals(Object other){
-		// TODO Auto-generated method stub
-		return false;
+		if(!(other instanceof Rational))
+			return false;
+		Rational otherRational = (Rational) other;
+		return (getNumerator()==otherRational.getNumerator() 
+				& getDenominator()==otherRational.getDenominator());
 	}
 	
 	private int gcd(int a, int b) {

@@ -47,10 +47,10 @@ public class SetOperationsTest {
 			};
 			
 		for (Numeric n : numbers){
-			_set.insert(n);
+			originalSet.insert(n);
 		} 
 		
-		Assert.assertEquals("Insert: duplicate insert should not affect Set",originalSet.toString(),_set.toString() );
+		Assert.assertEquals("Insert: duplicate insert should not affect Set",originalSet,_set );
 	}
 
 	@Test
@@ -74,7 +74,6 @@ public class SetOperationsTest {
 		Set containEmpty = new Set(); containEmpty.insert(emtpySet);
 		
 		Assert.assertEquals("Union: sets should match",  expectedUnionSet, containEmpty.union(expectedUnionSet));
-		System.out.println("test");
 	}
 
 	@Test
@@ -165,7 +164,7 @@ public class SetOperationsTest {
 			};
 			
 			for (Numeric n : numbers){
-				_set.insert(n);
+				finalSet.insert(n);
 			}
 		
 		Assert.assertEquals("TransformMul: set should be equal", finalSet,_set.transformMul(new Real(4)));
