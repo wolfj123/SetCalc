@@ -77,7 +77,7 @@ public class SetOperationsTest {
 
 	@Test
 	public void testSize() {
-		Assert.assertEquals("Size: size should be 5", 5, _set.size());
+		Assert.assertEquals("Size: size should be 4", 4, _set.size());
 	}
 
 	@Test
@@ -115,13 +115,12 @@ public class SetOperationsTest {
 		Set newSet = new Set();
 		Numeric[] numbers = new Numeric[]{
 				new Real(3),
-				new Real(5),
-				new Rational(1,2),
+				new Rational(5,10),
 				new Rational(6,4),
 			};
 			
 		for (Numeric n : numbers){
-			_set.insert(n);
+			newSet.insert(n);
 		} 
 		
 		
@@ -131,11 +130,9 @@ public class SetOperationsTest {
 			};
 			
 		for (Numeric n : numbers){
-			_set.insert(n);
+			finalSet.insert(n);
 		} 
-		
 		Assert.assertEquals("Intersection: _set should only contain 1/2",finalSet ,_set.intersect(newSet));
-		
 	}
 
 	@Test

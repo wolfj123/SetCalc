@@ -101,6 +101,7 @@ public class Set implements Element {
 		return this;
 	}
 	
+	/*
 	public Set intersect(Set s) {
 
 		for (Element e : _list)
@@ -110,6 +111,18 @@ public class Set implements Element {
 		}
 		
 		return this;
+	}
+	
+	*/
+	
+	public Set intersect(Set s) {
+
+		Set output = new Set();
+		for(Element e : _list){
+			if (s.member(e))
+				output.insert(e);
+		}
+		return output;
 	}
 	
 	public  Set difference(Set s) {
