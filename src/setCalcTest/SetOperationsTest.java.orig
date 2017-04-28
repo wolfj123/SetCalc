@@ -70,11 +70,18 @@ public class SetOperationsTest {
 		
 		Set expectedUnionSet = new Set(); 
 		expectedUnionSet.insert(emtpySet); expectedUnionSet.insert(set1); 
+<<<<<<< HEAD
 		
 		Set containEmpty = new Set(); containEmpty.insert(emtpySet);
 		
 		Assert.assertEquals("Union: sets should match",  expectedUnionSet, containEmpty.union(expectedUnionSet));
-	}
+		System.out.println("test");
+=======
+		
+		Set containEmpty = new Set(); containEmpty.insert(emtpySet);
+		
+		Assert.assertEquals("Union: sets should match",  expectedUnionSet, containEmpty.union(expectedUnionSet));
+>>>>>>> parent of 79762af... finish tests
 	}
 
 	@Test
