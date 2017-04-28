@@ -147,7 +147,7 @@ public class Set implements Element {
 		Set ans = Power(with,index+1);
 		ans = ans.union(without);
 		return ans;
-		
+		//test github
 	}
 	
 	public boolean contains(Set s) {
