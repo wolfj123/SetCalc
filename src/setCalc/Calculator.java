@@ -1,6 +1,6 @@
 package setCalc;
 
-import java.lang.reflect.Method;
+//import java.lang.reflect.Method;
 import java.util.Scanner;
 
 //import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
@@ -11,16 +11,19 @@ public class Calculator {
 
 	public static void main(String[] args) {
 		
-		Scanner scan = new Scanner(System.in);
-		
-		//ask for user input and call calc(String instruction)
+		Scanner MyScanner = new Scanner(System.in);
+	
 		//while(true){
-			String instruction = scan.nextLine();
+			String instruction = MyScanner.next();
 			
-			//print(calc(instruction));
-			calc(instruction);
+			//calc(instruction);
 		//}
 		
+			
+			
+			
+			MyScanner.close();
+			
 		/*
 		 * Ariel's tests
 		*
@@ -38,17 +41,17 @@ public class Calculator {
 		
 		 */
 
-		
+		System.out.println("wtf");
 
 	}
 	
-	
+	/*
 	public static void calc(String instruction){
 		//StringTokenizer input = new StringTokenizer(instruction, " ");
 		
 		String[] commands = instruction.trim().split("\\s+");
 		
-		/*THIS IS FOR FUN :) */
+		//THIS IS FOR FUN :) 
 		
 		try{
 			Class[] args1 = new Class[1];
@@ -61,7 +64,7 @@ public class Calculator {
 			print("Unknow command");
         }
 		
-		/*END OF FUN :( */
+		//END OF FUN :( 
 		
 		
 		switch(commands[0].toLowerCase()){
@@ -205,7 +208,7 @@ public class Calculator {
 	static private void print(String s){
 		System.out.println(s);
 	}
-	
+	*/
 
 
 }
