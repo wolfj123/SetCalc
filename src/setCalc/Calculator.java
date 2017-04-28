@@ -1,6 +1,6 @@
 package setCalc;
 
-//import java.lang.reflect.Method;
+import java.lang.reflect.Method;
 import java.util.Scanner;
 
 //import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
@@ -13,16 +13,11 @@ public class Calculator {
 		
 		Scanner MyScanner = new Scanner(System.in);
 	
-		//while(true){
+		while(true){
 			String instruction = MyScanner.next();
 			
-			//calc(instruction);
-		//}
-		
-			
-			
-			
-			MyScanner.close();
+			calc(instruction);
+		}
 			
 		/*
 		 * Ariel's tests
@@ -41,32 +36,32 @@ public class Calculator {
 		
 		 */
 
-		System.out.println("wtf");
-
 	}
 	
-	/*
+	
 	public static void calc(String instruction){
 		//StringTokenizer input = new StringTokenizer(instruction, " ");
 		
 		String[] commands = instruction.trim().split("\\s+");
 		
 		//THIS IS FOR FUN :) 
+		Method m = null;
 		
 		try{
 			Class[] args1 = new Class[1];
 	        args1[0] = String[].class;
-			Method m = Calculator.class.getMethod(commands[0], args1);
-			m.invoke(null, commands);
+			m = Calculator.class.getMethod(commands[0], new Class[]{String[].class});
+			m.invoke(null, new Object[]{commands});
 		}
 		catch (Exception e)
         {
-			print("Unknow command");
+			print("Unknown command");
         }
 		
+
 		//END OF FUN :( 
 		
-		
+		/*
 		switch(commands[0].toLowerCase()){
 		case "size":
 			break;
@@ -119,7 +114,8 @@ public class Calculator {
 		default:
 			print("Unknown command");
 			break;
-		}
+			
+		}*/
 		
 	}
 	
@@ -196,6 +192,7 @@ public class Calculator {
 	
 	static public String bonus(String[] input){
 		// TODO Auto-generated method stub
+		print("test");
 		return "test";
 	}
 	
@@ -208,7 +205,7 @@ public class Calculator {
 	static private void print(String s){
 		System.out.println(s);
 	}
-	*/
+	
 
 
 }
