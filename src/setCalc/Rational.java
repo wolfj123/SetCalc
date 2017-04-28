@@ -26,6 +26,8 @@ public class Rational extends Numeric {
 	
 	static public String getRegEx(){
 		//non java: "^[1-9]+\d*[\/][1-9]+\d*$"
+		
+		//TODO - fix not writing 0
 		return "^[1-9]+\\d*[\\/][1-9]+\\d*$";
 	}
 	
@@ -94,17 +96,6 @@ public class Rational extends Numeric {
 			return (String.valueOf(_a));
 	}
 	
-	/*
-	@Override
-	public boolean equals(Object other){
-		if(!(other instanceof Rational) & !(other instanceof Real))
-			return false;
-		else{
-			Numeric otherNum = (Numeric) other;
-			return convertToDouble()==otherNum.convertToDouble();
-		}
-	}
-	*/
 	
 	private int gcd(int a, int b) {
 		if (b==0) return a;

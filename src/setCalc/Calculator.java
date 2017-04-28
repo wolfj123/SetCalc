@@ -1,5 +1,7 @@
 package setCalc;
 
+import java.lang.reflect.Method;
+
 import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 
 //import java.util.StringTokenizer;
@@ -26,7 +28,16 @@ public class Calculator {
 	
 	public void calc(String instruction){
 		//StringTokenizer input = new StringTokenizer(instruction, " ");
+		
 		String[] commands = instruction.trim().split("\\s+");
+		
+		/*THIS IS FOR FUN :) */
+		
+		Method m=this.getClass().getMethod(commands[0], String[]);
+		
+		
+		/*END OF FUN :( */
+		
 		
 		switch(commands[0].toLowerCase()){
 		case "size":
@@ -85,7 +96,69 @@ public class Calculator {
 	}
 	
 	
+	public void size(String[] input){
+		
+	}
 	
+	public void contains(String[] input){
+		
+	}
+	
+	public void member(String[] input){
+		
+	}
+	
+	public void deepexistance(String[] input){
+		
+	}
+	
+	public void equals(String[] input){
+		
+	}
+	
+	public void insert(String[] input){
+		
+	}
+	
+	public void union(String[] input){
+		
+	}
+	
+	public void remove(String[] input){
+		
+	}
+	
+	public void intersect(String[] input){
+		
+	}
+	
+	public void difference(String[] input){
+		
+	}
+	
+	public void power(String[] input){
+		
+	}
+	
+	public void transformAdd(String[] input){
+		
+	}
+	
+	public void transformMul(String[] input){
+		
+	}
+	
+	public void help(String[] input){
+		
+	}
+	
+	public void bonus(String[] input){
+		
+	}
+	
+	public void exit(String[] input){
+		
+	}
 	
 	
 	

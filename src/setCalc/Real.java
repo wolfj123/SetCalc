@@ -17,6 +17,7 @@ public class Real extends Numeric {
 	
 	static public String getRegEx(){
 		//non java:  "(^[1-9]\d*+$)|(^[1-9]\d*\.\d+$)"
+		//TODO - fix not writing 0
 		return "(^[1-9]\\d*+$)|(^[1-9]\\d*\\.\\d+$)";
 	}
 
@@ -60,25 +61,5 @@ public class Real extends Numeric {
 	public String toString(){
 		return String.valueOf(_value);
 	}
-	
-	/*
-	@Override
-	public boolean equals(Object other){
-		if(!(other instanceof Real))
-			return false;
-		Real otherReal = (Real) other;
-		return get_value()==otherReal.get_value();
-	}
-	
-	
-	@Override
-	public boolean equals(Object other){
-		if(!(other instanceof Rational) & !(other instanceof Real))
-			return false;
-		else{
-			Numeric otherNum = (Numeric) other;
-			return convertToDouble()==otherNum.convertToDouble();
-		}
-	}
-	*/
+
 }
