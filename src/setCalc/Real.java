@@ -1,10 +1,27 @@
 package setCalc;
+import java.util.regex.Pattern;
 
 public class Real implements Numeric {
 	private double _value;
 	
 	public Real(double value){
 		this._value = value;
+	}
+
+	public Real(String s){
+		if(!isValidString(s))
+			throw new IllegalArgumentException("Invalid String for Real");
+
+		_value = Double.parseDouble(s);
+	}
+	
+	static public String getRegEx(){
+		//non java:  "(^[1-9]\d*+$)|(^[1-9]\d*\.\d+$)"
+		return "(^[1-9]\\d*+$)|(^[1-9]\\d*\\.\\d+$)";
+	}
+
+	static public boolean isValidString(String s){
+		return Pattern.matches(getRegEx(), s);
 	}
 	
 	@Override

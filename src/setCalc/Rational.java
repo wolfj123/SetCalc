@@ -1,4 +1,5 @@
 package setCalc;
+import java.util.regex.Pattern;
 
 public class Rational implements Numeric {
 	private int _a;
@@ -11,6 +12,25 @@ public class Rational implements Numeric {
 		int gcd = gcd(a,b);
 		this._a = a/gcd;
 		this._b = b/gcd;
+	}
+	
+	
+	public Rational(String s){
+		if(!isValidString(s))
+			throw new IllegalArgumentException("Invalid String for Rational");
+		
+		String contents[] = s.split("/");
+		_a = Integer.parseInt(contents[0]);
+		_b = Integer.parseInt(contents[1]);
+	}
+	
+	static public String getRegEx(){
+		//non java: "^[1-9]+\d*[\/][1-9]+\d*$"
+		return "^[1-9]+\\d*[\\/][1-9]+\\d*$";
+	}
+	
+	static public boolean isValidString(String s){
+		return Pattern.matches(getRegEx(), s);
 	}
 	
 	@Override

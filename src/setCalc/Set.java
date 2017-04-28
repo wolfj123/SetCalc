@@ -1,6 +1,6 @@
 package setCalc;
 
-import java.util.ArrayList;
+import java.util.Vector;
 import java.util.List;
 
 public class Set implements Element {
@@ -8,9 +8,68 @@ public class Set implements Element {
 	private List<Element> _list;
 
 	public Set (){
-		_list= new ArrayList<Element>();
+		_list= new Vector<Element>();
 	}
 	
+
+	public Set(String s){
+		if(!isValidString(s))
+			throw new IllegalArgumentException("Illegal List");
+		
+		_list = new Vector<Element>();
+		String[] content = s.substring(1, s.length()-2) .split(",");
+		
+		if(content.length>0)
+		for(String e : content){
+			Element newElement = createElementFromString(e);
+			if(newElement!=null)
+				insert(newElement);
+		}
+	}
+	
+	private Element createElementFromString(String s){
+		if(Rational.isValidString(s))
+			return new Rational(s);
+		
+		if(Real.isValidString(s))
+			return new Real(s);
+		
+		if(Set.isValidString(s))
+			return new Set(s);
+		
+		return null;
+	}
+	
+	/* I guess java doesn't support recursive regex :(
+	static public String getRegEx(){
+		return "(^[{][}]$)|(^[{](a)[}]$)";
+	}
+	*/
+	
+	static public  boolean isValidString(String s){
+		if(s == null || s.length()==0) //is empty or null
+			return false;
+		
+		if(s.charAt(0)!='{' || s.charAt(s.length()-1)!='}') //is enclosed in {}
+			return false;
+		
+		String elements[] = s.substring(1, s.length()-2).split(",");
+		if(elements.length==0)
+			return true;
+		
+		for (String e : elements){ //does not have legal elements
+			
+			if(!Rational.isValidString(e)) //not a Rational
+				return false;
+			
+			if(!Real.isValidString(e)) //not a Real
+				return false;
+			
+			if(!Set.isValidString(e)) //not a Set
+				return false;
+		}
+		return true;
+	}
 	
 	public Set (Element e){
 		super();
