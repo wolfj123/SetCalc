@@ -2,9 +2,8 @@ package setCalc;
 
 import java.util.Vector;
 
-import javax.print.attribute.standard.MediaSize.Other;
-
 import java.util.List;
+
 
 public class Set implements Element {
 	
@@ -81,8 +80,9 @@ public class Set implements Element {
 
 	
 	public Set insert(Element e) {
-		if (!_list.contains(e)) // check if an object already exists
+		if (!_list.contains(e)){ // check if an object already exists
 			_list.add(e);
+		}
 		return this;
 	}
 	
@@ -133,18 +133,34 @@ public class Set implements Element {
 	}
 	
 	public  Set power() {
-		Set without = new Set(new Set());
+		Set ans = new Set (new Set());
+		Set ansClone = new Set (new Set());
+		
+		for (Element e : _list){
+			ansClone = (Set)ans.Clone();
+			for (Element ansE : ansClone._list){
+				Element insert = ((Set)ansE).insert(e);
+				ansClone.insert(insert);
+			}
+			ans = ans.union(ansClone);
+		}
+
+
+		
+		/*	Set without = new Set(new Set());
 		Set with = new Set(new Set (_list.get(0)));
 		
 		Set ans = Power(without, 1 );
 		ans = ans.union(Power(with, 1));
 		
+		return ans;*/
 		return ans;
 	}
 	
 	private Set Power(Set s ,int index){
-		if (index>=_list.size())
+		/*if (index>=_list.size())
 			return s;
+		
 		Set without =(Set)Power(s, index+1).Clone();
 
 		Set with = (Set)s.Clone();
@@ -153,13 +169,18 @@ public class Set implements Element {
 			for (Element e : with._list){
 				((Set)e).insert(add);
 			}
+			with.insert(new Set (add));
 		}
-
+		
+		
 		with = (Set)Power(with, index+1).Clone();	
 		
 		Set ans = with.union(without);
-		ans.insert(new Set (_list.get(index)));
-		return ans;
+		//ans.insert(new Set (_list.get(index)));
+		return ans;*/
+		
+		
+		return null;
 	}
 	
 	public Object Clone (){
@@ -252,11 +273,24 @@ public class Set implements Element {
 	public boolean equals(Object other){
 		if(!(other instanceof Set))
 			return false;
+		/*
+		List<Element> otherList = ((Set) other)._list;
+		return _list.equals(otherList);*/
+		//two sets are empty
+	
 		boolean ans = true;
-		for (Element e : ((Set) other)._list){
-			if (!_list.contains(e)){
+		for (Element e : _list){
+			if (!(((Set)other)._list.contains(e))){
 				ans=false;
 				break;
+			}
+		}
+		if (ans){
+			for (Element e : ((Set)other)._list){
+				if (!_list.contains(e)){
+					ans=false;
+					break;
+				}
 			}
 		}
 		
