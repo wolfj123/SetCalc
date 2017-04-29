@@ -169,12 +169,16 @@ public class Calculator {
 	}
 	
 	static private Element createElement(String s){
+		
+		return Set.createElementFromString(s);
+		/*
 		if(isNumeric(s))
 			return createNumeric(s);
 		if(isSet(s))
 			return createSet(s);
 	
 		return null;
+		*/
 	}
 	
 
