@@ -1,11 +1,11 @@
 package setCalc;
-
+import java.lang.Cloneable;
 import java.util.Vector;
 
 import java.util.List;
 
 
-public class Set implements Element {
+public class Set implements Element,Cloneable {
 	
 	private List<Element> _list;
 
