@@ -2,6 +2,7 @@ package setCalc;
 
 import java.util.Vector;
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class Set implements Element {
 	
@@ -52,26 +53,29 @@ public class Set implements Element {
 	*/
 	
 	static public  boolean isValidString(String s){
+		
 		if(s == null || s.length()==0) //is empty or null
 			return false;
 		
+		if(s.contains(",,") | s.contains("{,") | s.contains(",}")) return false;
+		
 		if(s.charAt(0)!='{' || s.charAt(s.length()-1)!='}') //is enclosed in {}
 			return false;
-
-		String newS = s.substring(1, s.length()-1);
 		
-		if(s.contains(",")){
-			String[] elements = newS.split(",");
-			for (String e : elements){ //does not have legal elements
-				if(!Rational.isValidString(e) & !Real.isValidString(e) & !Set.isValidString(e)) //not an element
-					return false;
-			}
-		}
-		else{
-			
-			return (newS=="" | Set.isValidString(newS) | Real.isValidString(newS) | Rational.isValidString(newS));
-		}
 
+		
+		String newS = s.substring(1, s.length()-1);
+		if(newS=="") return true;
+		
+		StringTokenizer t = new StringTokenizer(newS,",");
+		if(!t.hasMoreTokens()) return false;
+		
+		while(t.hasMoreTokens()){
+			String e = t.nextToken();
+			if(!Set.isValidString(e) & !Real.isValidString(e) & !Rational.isValidString(e))
+				return false;
+		}
+		
 		return true;
 	}
 
