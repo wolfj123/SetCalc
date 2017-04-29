@@ -2,6 +2,9 @@ package setCalc;
 
 import java.lang.reflect.Method;
 import java.util.Scanner;
+import java.util.Stack;
+
+import com.sun.org.apache.regexp.internal.REUtil;
 
 //import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 
@@ -47,8 +50,14 @@ public class Calculator {
 	
 	
 	static public String size(String[] input){
-		// TODO Auto-generated method stub
-		return null;
+
+		String setInput = convertArrToSet(input); // create string of supposed set input
+		if ((input.length<1)||!isSet(setInput)){ // check if input is a set
+			return "Illegal Parameters";
+		}
+		Set sizeSet = createSet(setInput);
+		Integer size = sizeSet.size();
+		return size.toString();
 	}
 	
 	static public String contains(String[] input){
@@ -66,8 +75,21 @@ public class Calculator {
 	}
 	
 	static public String member(String[] input){
-		// TODO Auto-generated method stub
-		return null;
+		if ((input.length<1)){ // check if input is a set
+			return "Illegal Parameters";
+		}
+		String [] updateInput = converToSetAndNum (input);
+		if (!isSet(updateInput[0])| (isNumeric(updateInput[1]))){
+			return "Illegal Parameters";
+		}
+		Set setInput = createSet(updateInput[0]);
+		Numeric num = createNumeric(updateInput[1]);
+		if (setInput.member(num)){
+			return "True";
+		}
+		else {
+			return "False";
+		}
 	}
 	
 	static public String deepexistance(String[] input){
@@ -217,5 +239,134 @@ public class Calculator {
 		*/
 	}
 	
+	
+	// convert input string array into char array with no command
+	static private char[] arrToCharArray (String [] input){
+		
+		String inputStr = "";
+		for (int i=1; i<input.length ; i++){
+			inputStr+=input[i];
+		}
+		
+		
+		char [] ans = new char [inputStr.length()];
+		for (int i= 0; i< inputStr.length(); i++){
+			ans[i]=inputStr.charAt(i);
+		}
+		
+		
+		return ans;
+	}
 
+	// converts string array input into one set String
+	static private String convertArrToSet(String [] input){
+		String ans=new String();
+		char [] charInput = arrToCharArray(input);
+		Stack<Integer> parenthesisStack = new Stack<Integer>(); // 0 - open parenthesis, 1- close parenthesis
+		boolean balanced=true;
+		// go through entire input
+		for (int i=0;i<charInput.length & balanced;i++){
+			ans+=charInput[i];
+			// update parenthesis stack for balance
+			if (charInput[i] =='{'){
+				parenthesisStack.push(0);
+			}
+			if (charInput[i]=='}'){
+				if ((!parenthesisStack.peek().equals(0))){ // check if unbalanced
+					balanced=false;
+					ans ="X";
+				}
+				else{
+					parenthesisStack.pop();
+				}
+			}
+		}
+		if (!parenthesisStack.isEmpty()){
+			return "X";
+		}
+		return ans;
+	}
+	// converts string array input into two sets Strings
+	static private String [] convertArrToTwoSets(String [] input){
+		String [] ans={"",""};
+		char [] charInput = arrToCharArray(input);
+		Stack<Integer> parenthesisStack = new Stack<Integer>(); // 0 - open parenthesis, 1- close parenthesis
+		boolean balanced=true;
+		int setNum =0;
+		// go through input
+		for (int i=0;i<charInput.length & balanced & setNum<ans.length;i++){
+			
+			if (charInput[i] =='{'){
+				parenthesisStack.push(0);
+				ans[setNum]+=charInput[i]; // put opening parenthesis to String
+			}
+			
+			else if (charInput[i] =='}'){
+				ans[setNum]+=charInput[i]; // put opening parenthesis to String
+				if ((!parenthesisStack.peek().equals(0))){
+					balanced=false;
+					ans[setNum] ="X";
+					setNum++; // unbalanced Set go to next one
+				}
+				else{
+					parenthesisStack.pop();
+				}
+			}
+			else {
+				ans[setNum]+=charInput[i];
+			}
+			
+			if (parenthesisStack.isEmpty()){ // stack empty means finish first set
+				setNum++;
+			}
+		}
+
+		
+		return ans;
+	}
+	//converts  string array input into a set and a num Strings
+	static private String [] converToSetAndNum (String [] input){
+		String [] ans={"",""};
+		char [] charInput = arrToCharArray(input);
+		Stack<Integer> parenthesisStack = new Stack<Integer>(); // 0 - open parenthesis, 1- close parenthesis
+		boolean finishedSet=false;
+		int setNum =0;
+		// go through input to create Set String
+		for (int i=0;i<charInput.length  & setNum<ans.length;i++){
+			if (!finishedSet){ // create Set String
+				if (charInput[i] =='{'){
+					parenthesisStack.push(0);
+					ans[setNum]+=charInput[i]; // put opening parenthesis to String
+				}
+				
+				else if (charInput[i] =='}'){
+					ans[setNum]+=charInput[i]; // put opening parenthesis to String
+					if ((!parenthesisStack.peek().equals(0))){
+						finishedSet=false;
+						ans[setNum] ="X";
+						setNum++;
+					}
+					else{
+						parenthesisStack.pop();
+					}
+				}
+				else if (parenthesisStack.isEmpty()){ // stack empty means finish first set
+					finishedSet=true;
+					setNum++;
+					ans[setNum]+=charInput[i];
+				}
+				else {
+					ans[setNum]+=charInput[i];
+				}
+			}
+			else{
+				ans[setNum]+=charInput[i];
+			}
+
+		}
+		
+		
+		
+		return ans;
+	}
 }
