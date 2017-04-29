@@ -103,16 +103,7 @@ public class Set implements Element,Cloneable {
 		for(Element e : otherList)
 			insert(e);
 		return this;
-		
-		
-	/*	Set ans = new Set();
-		for (Element e : _list){
-			ans.insert(e);
-		}
-		for (Element e : s._list){
-			ans.insert(e);
-		}	
-		return ans;*/
+
 	}
 	
 	public Set intersect(Set s) {
@@ -146,42 +137,9 @@ public class Set implements Element,Cloneable {
 		}
 
 
-		
-		/*	Set without = new Set(new Set());
-		Set with = new Set(new Set (_list.get(0)));
-		
-		Set ans = Power(without, 1 );
-		ans = ans.union(Power(with, 1));
-		
-		return ans;*/
 		return ans;
 	}
 	
-	private Set Power(Set s ,int index){
-		/*if (index>=_list.size())
-			return s;
-		
-		Set without =(Set)Power(s, index+1).Clone();
-
-		Set with = (Set)s.Clone();
-		for (int i = index;i<_list.size();i++){
-			Element add = (Element)_list.get(i);
-			for (Element e : with._list){
-				((Set)e).insert(add);
-			}
-			with.insert(new Set (add));
-		}
-		
-		
-		with = (Set)Power(with, index+1).Clone();	
-		
-		Set ans = with.union(without);
-		//ans.insert(new Set (_list.get(index)));
-		return ans;*/
-		
-		
-		return null;
-	}
 	
 	public Object Clone (){
 		Set newSet = new Set();
