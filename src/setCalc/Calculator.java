@@ -14,7 +14,7 @@ public class Calculator {
 		Scanner MyScanner = new Scanner(System.in);
 	
 		while(true){
-			String instruction = MyScanner.next();
+			String instruction = MyScanner.nextLine();
 			
 			String output = calc(instruction);
 			print(output);
@@ -24,8 +24,11 @@ public class Calculator {
 	
 	public static String calc(String instruction){		
 		String[] commands = instruction.trim().split("\\s+");
+
 		String output = "Unknown command";
 		
+		
+		//attempt calling the method by name
 		try
 		{
 			Class[] args1 = new Class[1];
@@ -35,7 +38,7 @@ public class Calculator {
 		}
 		catch (Exception e)
         {
-			return ("Unknown command");
+			return ("Unknown command" + e.getMessage());
         }
 		
 		return output;
@@ -79,8 +82,14 @@ public class Calculator {
 	}
 	
 	static public String remove(String[] input){
-		// TODO Auto-generated method stub
-		return null;		
+		//verify input
+		if(input.length!=3 || !isSet(input[1]) || !isElement(input[2]))
+			return "Illegal Parameters";
+		//create elements
+		Set set = createSet(input[1]);
+		Element e = createElement(input[2]);
+		
+		return set.remove(e).toString();		
 	}
 	
 	static public String intersect(String[] input){
@@ -130,6 +139,43 @@ public class Calculator {
 		System.out.println(s);
 	}
 	
+	static private boolean isSet(String s){
+		return Set.isValidString(s);
+	}
 
+	static private boolean isElement(String s){
+		return (Set.isValidString(s) | Real.isValidString(s) | Rational.isValidString(s));
+	}
+
+	static private boolean isNumeric(String s){
+		return (Real.isValidString(s) | Rational.isValidString(s));
+	}
+	
+	static private Set createSet(String s){
+		if(!isSet(s))
+			return null;
+		
+		return new Set(s);
+	}
+	
+	static private Numeric createNumeric(String s){
+		
+		if(Real.isValidString(s))
+			return new Real(s);
+		if(Rational.isValidString(s))
+			return new Rational(s);
+
+		return null;
+	}
+	
+	static private Element createElement(String s){
+		if(isNumeric(s))
+			return createNumeric(s);
+		if(isSet(s))
+			return createSet(s);
+	
+		return null;
+	}
+	
 
 }

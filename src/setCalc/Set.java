@@ -57,22 +57,21 @@ public class Set implements Element {
 		
 		if(s.charAt(0)!='{' || s.charAt(s.length()-1)!='}') //is enclosed in {}
 			return false;
+
+		String newS = s.substring(1, s.length()-1);
 		
-		String elements[] = s.substring(1, s.length()-2).split(",");
-		if(elements.length==0)
-			return true;
-		
-		for (String e : elements){ //does not have legal elements
-			
-			if(!Rational.isValidString(e)) //not a Rational
-				return false;
-			
-			if(!Real.isValidString(e)) //not a Real
-				return false;
-			
-			if(!Set.isValidString(e)) //not a Set
-				return false;
+		if(s.contains(",")){
+			String[] elements = newS.split(",");
+			for (String e : elements){ //does not have legal elements
+				if(!Rational.isValidString(e) & !Real.isValidString(e) & !Set.isValidString(e)) //not an element
+					return false;
+			}
 		}
+		else{
+			
+			return (newS=="" | Set.isValidString(newS) | Real.isValidString(newS) | Rational.isValidString(newS));
+		}
+
 		return true;
 	}
 
@@ -82,8 +81,6 @@ public class Set implements Element {
 			_list.add(e);
 		return this;
 	}
-	
-
 	
 	public Set remove(Element e) {
 		_list.remove(e);
