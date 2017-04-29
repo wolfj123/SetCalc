@@ -19,7 +19,18 @@ public class StringTest {
 	}
 
 	@Test
-	public void SetString() {
+	public void SetString(){
+		Set set1 = new Set("{1,2}");
+		Set set2 = new Set(); set2.insert(new Real(1)); set2.insert(new Real(2));
+		
+		Assert.assertEquals(set2, set1);
+		
+	}
+	
+	
+	
+	@Test
+	public void SetValidString() {
 		String[] correctStrings = new String[] {
 			"{}",
 			"{1}",
@@ -46,10 +57,9 @@ public class StringTest {
 			Assert.assertEquals("Did not recgonize "+ s,false, Set.isValidString(s));
 		}
 	}
-	
-	
+
 	@Test
-	public void RealString() {
+	public void RealSValidtring() {
 		String[] correctStrings = new String[] {
 			"0",
 			"1",
@@ -78,7 +88,7 @@ public class StringTest {
 	}
 	
 	@Test
-	public void RationalString() {
+	public void RationalValidString() {
 		String[] correctStrings = new String[] {
 			"0/2",
 			"1/1",

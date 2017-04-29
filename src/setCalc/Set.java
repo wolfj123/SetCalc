@@ -23,7 +23,16 @@ public class Set implements Element {
 			throw new IllegalArgumentException("Illegal List");
 		
 		_list = new Vector<Element>();
-		String[] content = s.substring(1, s.length()-2) .split(",");
+		
+		StringTokenizer t = new StringTokenizer(s.substring(1, s.length()-1), ",");
+		
+		while(t.hasMoreTokens()){
+			String e = t.nextToken();
+			Element el = createElementFromString(e);
+			this.insert(el);	
+		}
+		/*
+		String[] content = s.substring(1, s.length()-1) .split(",");
 		
 		if(content.length>0)
 		for(String e : content){
@@ -31,9 +40,10 @@ public class Set implements Element {
 			if(newElement!=null)
 				insert(newElement);
 		}
+		*/
 	}
 	
-	private Element createElementFromString(String s){
+	public static Element createElementFromString(String s){
 		if(Rational.isValidString(s))
 			return new Rational(s);
 		
