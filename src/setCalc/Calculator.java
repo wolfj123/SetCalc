@@ -11,30 +11,31 @@ public class Calculator {
 
 	public static void main(String[] args) {
 		
-		Scanner MyScanner = new Scanner(System.in);
+		/*Scanner MyScanner = new Scanner(System.in);
 	
 		while(true){
 			String instruction = MyScanner.next();
 			
 			calc(instruction);
-		}
+		}*/
 			
 		/*
 		 * Ariel's tests
 		*
-		*
+		*/
 		 
-		Set _testSet = new Set (new Set());
-		System.out.println(_testSet);
-		Set _secondSet = new Set ((new Real(1)));
-		_secondSet.insert((new Real(2)));
-		System.out.println(_secondSet);
-		System.out.println("----------------");
-		System.out.println(_secondSet.union(_secondSet));
-		System.out.println(new Set().equals(new Real(1)));
-		System.out.println(_secondSet.power());
 		
-		 */
+		Set testSet = new Set();
+		testSet.insert(new Real (1));
+		testSet.insert(new Real (2));
+		testSet.insert(new Real (3));
+		//testSet.insert(new Real (4));
+		Set anotherSet = new Set (new Real (1));
+		System.out.println(anotherSet.union(testSet));
+		//System.out.println(testSet);
+		System.out.println(testSet.power());	
+		 /**/
+		
 
 	}
 	
@@ -205,3 +206,4 @@ public class Calculator {
 
 
 }
+

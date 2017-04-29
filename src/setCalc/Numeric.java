@@ -8,6 +8,8 @@ public abstract class Numeric implements Element{
 	
 	public abstract double convertToDouble();
 	
+	public abstract Object Clone();
+	
 	@Override
 	public boolean equals(Object other){
 		if(!(other instanceof Rational) & !(other instanceof Real))

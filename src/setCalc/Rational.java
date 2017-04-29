@@ -102,4 +102,9 @@ public class Rational extends Numeric {
 		return gcd(b,a%b);
 	}
 	
+	public Object Clone(){
+		
+		return new Rational(_a,_b); 
+	}
+	
 }

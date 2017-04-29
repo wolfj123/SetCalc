@@ -1,6 +1,9 @@
 package setCalc;
 
 import java.util.Vector;
+
+import javax.print.attribute.standard.MediaSize.Other;
+
 import java.util.List;
 
 public class Set implements Element {
@@ -95,25 +98,22 @@ public class Set implements Element {
 	}
 	
 	public Set union(Set s) {
-		List<Element> otherList = s._list;
+	
+	 	List<Element> otherList = s._list;
 		for(Element e : otherList)
 			insert(e);
 		return this;
-	}
-	
-	/*
-	public Set intersect(Set s) {
-
-		for (Element e : _list)
-		{
-			if (!s.member(e))
-				_list.remove(e);
-		}
 		
-		return this;
+		
+	/*	Set ans = new Set();
+		for (Element e : _list){
+			ans.insert(e);
+		}
+		for (Element e : s._list){
+			ans.insert(e);
+		}	
+		return ans;*/
 	}
-	
-	*/
 	
 	public Set intersect(Set s) {
 
@@ -145,22 +145,37 @@ public class Set implements Element {
 	private Set Power(Set s ,int index){
 		if (index>=_list.size())
 			return s;
-		Set without = Power(s, index+1);
-		Set add = new Set (new Set (_list.get(index)));
-		Set with = new Set();
-		// need to figure out which is right
-		/*for (Element e : s._list){
-			with.insert(e);
-		}*/
-		with =s ;
-		for (Element e : with._list){
-			with.insert((((Set)e).union(add)));
+		Set without =(Set)Power(s, index+1).Clone();
+
+		Set with = (Set)s.Clone();
+		for (int i = index;i<_list.size();i++){
+			Element add = (Element)_list.get(i);
+			for (Element e : with._list){
+				((Set)e).insert(add);
+			}
 		}
-		with.insert(add);
+
+		with = (Set)Power(with, index+1).Clone();	
 		
-		Set ans = Power(with,index+1);
-		ans = ans.union(without);
+		Set ans = with.union(without);
+		ans.insert(new Set (_list.get(index)));
 		return ans;
+	}
+	
+	public Object Clone (){
+		Set newSet = new Set();
+		newSet._list = VectorClone();
+		return newSet;
+	}
+	
+	private Vector<Element> VectorClone(){
+		
+		Vector<Element> clonedVector = new Vector<Element>();
+		for (Element e : _list){
+			Element add = (Element)e.Clone();
+			clonedVector.add(add);
+		}
+		return clonedVector;
 	}
 	
 	public boolean contains(Set s) {
@@ -237,7 +252,16 @@ public class Set implements Element {
 	public boolean equals(Object other){
 		if(!(other instanceof Set))
 			return false;
-		List<Element> otherList = ((Set) other)._list;
-		return _list.equals(otherList);
+		boolean ans = true;
+		for (Element e : ((Set) other)._list){
+			if (!_list.contains(e)){
+				ans=false;
+				break;
+			}
+		}
+		
+		return ans;
 	}
+	
+	
 }
