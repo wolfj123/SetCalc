@@ -3,7 +3,7 @@ package setCalc;
 import java.lang.reflect.Method;
 import java.util.Scanner;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
+//import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 
 //import java.util.StringTokenizer;
 
@@ -16,102 +16,29 @@ public class Calculator {
 		while(true){
 			String instruction = MyScanner.next();
 			
-			calc(instruction);
+			String output = calc(instruction);
+			print(output);
 		}
-			
-		/*
-		 * Ariel's tests
-		*
-		*
-		 
-		Set _testSet = new Set (new Set());
-		System.out.println(_testSet);
-		Set _secondSet = new Set ((new Real(1)));
-		_secondSet.insert((new Real(2)));
-		System.out.println(_secondSet);
-		System.out.println("----------------");
-		System.out.println(_secondSet.union(_secondSet));
-		System.out.println(new Set().equals(new Real(1)));
-		System.out.println(_secondSet.power());
-		
-		 */
-
 	}
 	
 	
-	public static void calc(String instruction){		
+	public static String calc(String instruction){		
 		String[] commands = instruction.trim().split("\\s+");
+		String output = "Unknown command";
 		
 		try
 		{
 			Class[] args1 = new Class[1];
 	        args1[0] = String[].class;
 			Method m = Calculator.class.getMethod(commands[0], new Class[]{String[].class});
-			m.invoke(null, new Object[]{commands});
+			output = (String) m.invoke(null, new Object[]{commands});
 		}
 		catch (Exception e)
         {
-			print("Unknown command");
+			return ("Unknown command");
         }
 		
-
-		//END OF FUN :( 
-		
-		/*
-		switch(commands[0].toLowerCase()){
-		case "size":
-			break;
-			
-		case "contains":
-			break;
-			
-		case "member":
-			break;
-			
-		case "deepexistance":
-			break;
-			
-		case "equals":
-			break;
-			
-		case "insert":
-			break;
-			
-		case "remove":
-			break;
-			
-		case "union":
-			break;
-			
-		case "intersect":
-			break;
-			
-		case "difference":
-			break;
-			
-		case "power":
-			break;
-			
-		case "transformAdd":
-			break;
-			
-		case "transformMul":
-			break;
-			
-		case "help":
-			break;
-			
-		case "bonus":
-			break;
-			
-		case "exit":
-			break;
-			
-		default:
-			print("Unknown command");
-			break;
-			
-		}*/
+		return output;
 		
 	}
 	
@@ -188,12 +115,13 @@ public class Calculator {
 	
 	static public String bonus(String[] input){
 		// TODO Auto-generated method stub
-		print("test");
+		//print("test");
 		return "test";
 	}
 	
-	static public void exit(String[] input){
-		
+	static public String exit(String[] input){
+		// TODO Auto-generated method stub
+		return "Goodbye!";
 	}
 	
 	
