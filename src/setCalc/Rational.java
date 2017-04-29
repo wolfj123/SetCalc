@@ -63,7 +63,7 @@ public class Rational extends Numeric {
 	private Rational transformAdd(Rational n) {
 		_a = getNumerator() + n.getNumerator(); 
 		_b = getDenominator() + n.getDenominator();
-		return this;
+		return new Rational(_a,_b);
 	}
 
 	private Rational transformMul(Rational n) {
