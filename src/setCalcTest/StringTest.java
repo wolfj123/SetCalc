@@ -76,5 +76,34 @@ public class StringTest {
 			Assert.assertEquals("Did not recgonize "+ s,false, Real.isValidString(s));
 		}
 	}
+	
+	@Test
+	public void RationalString() {
+		String[] correctStrings = new String[] {
+			"0/2",
+			"1/1",
+			"0/2",
+			"00/2",
+			"123/123",
+			"0/12313"
+		};
+		
+		for(String s : correctStrings){
+			Assert.assertEquals("Did not recgonize "+ s,true, Rational.isValidString(s));
+		}
+		
+		String[] incorrectStrings = new String[] {
+			" 0/2",
+			"6 ",
+			"1.5.6",
+			"18 9",
+			"1..4",
+			".5",
+			};
+		
+		for(String s : incorrectStrings){
+			Assert.assertEquals("Did not recgonize "+ s,false, Rational.isValidString(s));
+		}
+	}
 
 }

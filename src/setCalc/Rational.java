@@ -25,10 +25,9 @@ public class Rational extends Numeric {
 	}
 	
 	static public String getRegEx(){
-		//non java: "^[1-9]+\d*[\/][1-9]+\d*$"
+		//non java: "^[0-9]+\d*[\/][1-9]+\d*$"
 		
-		//TODO - fix not writing 0
-		return "^[1-9]+\\d*[\\/][1-9]+\\d*$";
+		return "^[0-9]+\\d*[\\/][1-9]+\\d*$";
 	}
 	
 	static public boolean isValidString(String s){
