@@ -59,6 +59,8 @@ public class Real extends Numeric {
 	
 	@Override
 	public String toString(){
+		if(_value == Math.round(_value))
+			return String.valueOf((int)_value);
 		return String.valueOf(_value);
 	}
 	

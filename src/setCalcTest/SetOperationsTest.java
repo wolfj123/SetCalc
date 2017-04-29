@@ -53,7 +53,7 @@ public class SetOperationsTest {
 			originalSet.insert(n);
 		} 
 		
-		Assert.assertEquals("Insert: duplicate insert should not affect Set",originalSet.toString(),_set.toString() );
+		Assert.assertEquals("Insert: duplicate insert should not affect Set",originalSet,_set);
 	}
 
 	@Test
@@ -72,7 +72,7 @@ public class SetOperationsTest {
 			answerSet.insert(n);
 		} 
 		
-		Assert.assertEquals("the set sholuden't have 1, 1/2",answerSet.toString(), _set.toString());
+		Assert.assertEquals("the set sholuden't have 1, 1/2",answerSet, _set);
 
 	}
 
@@ -106,7 +106,7 @@ public class SetOperationsTest {
 		} 
 		answerSet.insert(new Set ());
 		
-		Assert.assertEquals("the union set shuld be: ",answerSet.toString(),_set.toString());
+		Assert.assertEquals("the union set shuld be: ",answerSet,_set);
 	}
 	
 
