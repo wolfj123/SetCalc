@@ -24,10 +24,23 @@ public class StringTest {
 		Set set2 = new Set(); set2.insert(new Real(1)); set2.insert(new Real(2));
 		
 		Assert.assertEquals(set2, set1);
-		
 	}
 	
+	@Test
+	public void RealString(){
+		Real real1 = new Real("01.87");
+		Real real2 = new Real(1.87);
+		
+		Assert.assertEquals(real2, real1);
+	}
 	
+	@Test
+	public void RationalString(){
+		Rational rational1 = new Rational("40/80");
+		Rational rational2 = new Rational(10,20);
+		
+		Assert.assertEquals(rational2, rational1);
+	}
 	
 	@Test
 	public void SetValidString() {
