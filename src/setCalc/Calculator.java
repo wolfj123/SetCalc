@@ -28,7 +28,7 @@ public class Calculator {
 	public static String calc(String instruction){		
 		String[] commands = instruction.trim().split("\\s+");
 
-		String output = "Unknown command";
+		String output;
 		
 		
 		//attempt calling the method by name
@@ -41,7 +41,7 @@ public class Calculator {
 		}
 		catch (Exception e)
         {
-			return ("Unknown command" + e.getMessage());
+			return ("Unknown command");
         }
 		
 		return output;
@@ -227,16 +227,7 @@ public class Calculator {
 	}
 	
 	static private Element createElement(String s){
-		
 		return Set.createElementFromString(s);
-		/*
-		if(isNumeric(s))
-			return createNumeric(s);
-		if(isSet(s))
-			return createSet(s);
-	
-		return null;
-		*/
 	}
 	
 	
