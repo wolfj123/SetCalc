@@ -75,7 +75,12 @@ public class Set implements Element,Cloneable {
 			return false;
 		
 		String newS = s.substring(1, s.length()-1);
+		//if((newS.charAt(0)=='{' || newS.charAt(newS.length()-1)=='}'))
+		//	return isValidString(newS);
+		
 		if(newS.length()==0) return true;
+		if(newS.charAt(0)=='{' & newS.charAt(newS.length()-1)=='}') 
+			return isValidString(newS);
 		
 		StringTokenizer t = new StringTokenizer(newS,",");
 		if(!t.hasMoreTokens()) return false;
