@@ -157,7 +157,7 @@ public class Set implements Element,Cloneable {
 	}
 	
 	private Vector<Element> VectorClone(){
-		
+		//TODO - fix name convention with refractor
 		Vector<Element> clonedVector = new Vector<Element>();
 		for (Element e : _list){
 			Element add = (Element)e.Clone();

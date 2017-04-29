@@ -52,8 +52,17 @@ public class Calculator {
 	}
 	
 	static public String contains(String[] input){
-		// TODO Auto-generated method stub
-		return null;
+		//verify input
+		if(input.length!=3 || !isSet(input[1]) || !isSet(input[2]))
+			return "Illegal Parameters";
+		//create elements
+		Set set1 = createSet(input[1]);
+		Set set2 = createSet(input[2]);
+		
+		boolean output = set1.contains(set2);	
+		if(output)
+			return "True";
+		else return "False";
 	}
 	
 	static public String member(String[] input){
@@ -62,8 +71,17 @@ public class Calculator {
 	}
 	
 	static public String deepexistance(String[] input){
-		// TODO Auto-generated method stub
-				return null;
+		//verify input
+		if(input.length!=3 || !isSet(input[1]) || !isElement(input[2]))
+			return "Illegal Parameters";
+		//create elements
+		Set set = createSet(input[1]);
+		Element e = createElement(input[2]);
+		
+		boolean output = set.deepExistence(e);	
+		if(output)
+			return "True";
+		else return "False";
 	}
 	
 	static public String equals(String[] input){
@@ -77,8 +95,14 @@ public class Calculator {
 	}
 	
 	static public String union(String[] input){
-		// TODO Auto-generated method stub
-		return null;		
+		//verify input
+		if(input.length!=3 || !isSet(input[1]) || !isSet(input[2]))
+			return "Illegal Parameters";
+		//create elements
+		Set set1 = createSet(input[1]);
+		Set set2 = createSet(input[2]);
+		
+		return set1.union(set2).toString();		
 	}
 	
 	static public String remove(String[] input){
@@ -98,8 +122,14 @@ public class Calculator {
 	}
 	
 	static public String difference(String[] input){
-		// TODO Auto-generated method stub
-		return null;		
+		//verify input
+		if(input.length!=3 || !isSet(input[1]) || !isSet(input[2]))
+			return "Illegal Parameters";
+		//create elements
+		Set set1 = createSet(input[1]);
+		Set set2 = createSet(input[2]);
+		
+		return set1.difference(set2).toString();			
 	}
 	
 	static public String power(String[] input){
@@ -108,8 +138,14 @@ public class Calculator {
 	}
 	
 	static public String transformAdd(String[] input){
-		// TODO Auto-generated method stub
-		return null;		
+		//verify input
+		if(input.length!=3 || !isSet(input[1]) || !isNumeric(input[2]))
+			return "Illegal Parameters";
+		//create elements
+		Set set = createSet(input[1]);
+		Numeric n = createNumeric(input[2]);
+		
+		return set.transformAdd(n).toString();		
 	}
 	
 	static public String transformMul(String[] input){
@@ -129,7 +165,7 @@ public class Calculator {
 	}
 	
 	static public String exit(String[] input){
-		// TODO Auto-generated method stub
+		System.exit(0);
 		return "Goodbye!";
 	}
 	

@@ -45,6 +45,7 @@ public class StringTest {
 	@Test
 	public void SetValidString() {
 		String[] correctStrings = new String[] {
+			"{{{},3/2}}",
 			"{}",
 			"{1}",
 			"{{}}",
