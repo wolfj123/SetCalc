@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 import java.util.Scanner;
 import java.util.Stack;
 
-import com.sun.org.apache.regexp.internal.REUtil;
+//import com.sun.org.apache.regexp.internal.REUtil;
 
 //import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 
@@ -29,22 +29,93 @@ public class Calculator {
 		String[] commands = instruction.trim().split("\\s+");
 
 		String output;
-		
-		
-		//attempt calling the method by name
-		try
-		{
-			Class[] args1 = new Class[1];
-	        args1[0] = String[].class;
-			Method m = Calculator.class.getMethod(commands[0], new Class[]{String[].class});
-			output = (String) m.invoke(null, new Object[]{commands});
+		switch(commands[0].toLowerCase()){
+		case "size":
+			output = size(commands);
+			break;
+			
+		case "contains":
+			output = contains(commands);
+			break;
+			
+		case "member":
+			output = member(commands);
+			break;
+			
+		case "deepexistance":
+			output = deepexistance(commands);
+			break;
+			
+		case "equals":
+			output = equals(commands);
+			break;
+			
+		case "insert":
+			output = insert(commands);
+			break;
+			
+		case "remove":
+			output = remove(commands);
+			break;
+			
+		case "union":
+			output = union(commands);
+			break;
+			
+		case "intersect":
+			output = intersect(commands);
+			break;
+			
+		case "difference":
+			output = difference(commands);
+			break;
+			
+		case "power":
+			output = power(commands);
+			break;
+			
+		case "transformAdd":
+			output = transformAdd(commands);
+			break;
+			
+		case "transformMul":
+			output = transformMul(commands);
+			break;
+			
+		case "help":
+			output = help(commands);
+			break;
+			
+		case "bonus":
+			output = bonus(commands);
+			break;
+			
+		case "exit":
+			output = exit(commands);
+			break;
+			
+		default:
+			output = "Unknown command";
+			break;
+			
 		}
-		catch (Exception e)
-        {
-			return ("Unknown command");
-        }
 		
 		return output;
+		
+		//attempt calling the method by name
+				/*
+				try
+				{
+					Class[] args1 = new Class[1];
+					Method m = Calculator.class.getMethod(commands[0], new Class[]{String[].class});
+					output = (String) m.invoke(null, new Object[]{commands});
+				}
+				catch (Exception e)
+		        {
+					return ("Unknown command " + e.getMessage());
+		        }
+				
+				*/
 		
 	}
 	

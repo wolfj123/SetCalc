@@ -60,7 +60,6 @@ public class Set implements Element,Cloneable {
 		if(s.contains(",,") | s.contains("{,") | s.contains(",}")) 
 			return false;
 		
-		//String[] bracesOff = s.split("\\}\\{");
 		String bracesOff = s.replace("{", "").replace("}", "");
 		String[] commasOff = bracesOff.split(",");
 		for(String el : commasOff){
