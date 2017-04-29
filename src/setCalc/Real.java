@@ -27,8 +27,7 @@ public class Real extends Numeric {
 	
 	@Override
 	public Real transformAdd(Numeric n) {
-		_value = _value + n.convertToDouble();
-		return this;
+		return new Real (_value + n.convertToDouble());
 	}
 
 	@Override
