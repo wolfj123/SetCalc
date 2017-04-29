@@ -61,5 +61,9 @@ public class Real extends Numeric {
 	public String toString(){
 		return String.valueOf(_value);
 	}
+	
+	public Object Clone(){
+		return new Real (_value);
+	}
 
 }

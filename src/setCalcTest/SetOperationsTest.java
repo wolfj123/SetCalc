@@ -1,5 +1,6 @@
 package setCalcTest;
 
+
 import setCalc.*;
 import static org.junit.Assert.*;
 
@@ -132,6 +133,7 @@ public class SetOperationsTest {
 		for (Numeric n : numbers){
 			finalSet.insert(n);
 		} 
+		
 		Assert.assertEquals("Intersection: _set should only contain 1/2",finalSet ,_set.intersect(newSet));
 	}
 
@@ -174,12 +176,12 @@ public class SetOperationsTest {
 		Set powerSet = new Set();
 		Set subSet1 = new Set(); //empty set
 		Set subSet2 = new Set(); subSet2.insert(new Real(0));	//{0}
-		Set subSet3 = new Set(); subSet2.insert(new Rational(1,1));	//{1}
-		Set subSet4 = new Set(); subSet2.insert(new Real(0)); subSet2.insert(new Rational(1,1)); //{0,1}
+		Set subSet3 = new Set(); subSet3.insert(new Rational(1,1));	//{1}
+		Set subSet4 = new Set(); subSet4.insert(new Real(0)); subSet4.insert(new Rational(1,1)); //{0,1}
 		
 		powerSet.insert(subSet1); powerSet.insert(subSet2); powerSet.insert(subSet3); powerSet.insert(subSet4);
 		
-		Assert.assertEquals("Powerset: sets should be equal", powerSet, newSet);
+		Assert.assertEquals("Powerset: sets should be equal", powerSet, newSet.power());
 	}
 
 	@Test
