@@ -39,11 +39,41 @@ public class StringTest {
 			"{ 2}",
 			"{,,}",
 			"{1,}",
-			"{,1}",
+			"{,1 , }",
 			};
 		
 		for(String s : incorrectStrings){
 			Assert.assertEquals("Did not recgonize "+ s,false, Set.isValidString(s));
+		}
+	}
+	
+	
+	@Test
+	public void RealString() {
+		String[] correctStrings = new String[] {
+			"0",
+			"1",
+			"12",
+			"1.5",
+			"1.55",
+			"0.60"
+		};
+		
+		for(String s : correctStrings){
+			Assert.assertEquals("Did not recgonize "+ s,true, Real.isValidString(s));
+		}
+		
+		String[] incorrectStrings = new String[] {
+			" 0",
+			"0 ",
+			"1.5.6",
+			"18 9",
+			"1..4",
+			".5",
+			};
+		
+		for(String s : incorrectStrings){
+			Assert.assertEquals("Did not recgonize "+ s,false, Real.isValidString(s));
 		}
 	}
 

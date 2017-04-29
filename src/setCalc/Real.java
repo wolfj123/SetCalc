@@ -16,9 +16,9 @@ public class Real extends Numeric {
 	}
 	
 	static public String getRegEx(){
-		//non java:  "(^[1-9]\d*+$)|(^[1-9]\d*\.\d+$)"
+		//non java:  "(^[0-9]\d*+$)|(^[0-9]\d*\.\d+$)"
 		//TODO - fix not writing 0
-		return "(^[1-9]\\d*+$)|(^[1-9]\\d*\\.\\d+$)";
+		return "(^[0-9]\\d*+$)|(^[0-9]\\d*\\.\\d+$)";
 	}
 
 	static public boolean isValidString(String s){
