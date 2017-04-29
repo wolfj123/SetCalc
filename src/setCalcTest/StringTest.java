@@ -30,16 +30,16 @@ public class StringTest {
 		};
 		
 		for(String s : correctStrings){
-			//Assert.assertEquals("Did not recgonize "+ s,true, Set.isValidString(s));
+			Assert.assertEquals("Did not recgonize "+ s,true, Set.isValidString(s));
 		}
 		
 		String[] incorrectStrings = new String[] {
-		//" {}",
-		//"{1}}",
-		//"{ 2}",
-		"{,,}",
-		"{1,}",
-		"{,1}",
+			" {}",
+			"{1}}",
+			"{ 2}",
+			"{,,}",
+			"{1,}",
+			"{,1}",
 			};
 		
 		for(String s : incorrectStrings){

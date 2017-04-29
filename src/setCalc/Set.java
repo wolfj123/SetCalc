@@ -62,10 +62,8 @@ public class Set implements Element {
 		if(s.charAt(0)!='{' || s.charAt(s.length()-1)!='}') //is enclosed in {}
 			return false;
 		
-
-		
 		String newS = s.substring(1, s.length()-1);
-		if(newS=="") return true;
+		if(newS.length()==0) return true;
 		
 		StringTokenizer t = new StringTokenizer(newS,",");
 		if(!t.hasMoreTokens()) return false;
