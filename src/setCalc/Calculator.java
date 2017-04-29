@@ -11,72 +11,15 @@ public class Calculator {
 
 	public static void main(String[] args) {
 		
-		/*Scanner MyScanner = new Scanner(System.in);
+		Scanner MyScanner = new Scanner(System.in);
 	
 		while(true){
 			String instruction = MyScanner.next();
 			
 			calc(instruction);
-		}*/
+		}
 			
-		/*
-		 * Ariel's tests
-		*
-		*/
-		 
 		
-		Set testSet = new Set();
-		testSet.insert(new Real (1));
-		testSet.insert(new Real (2));
-		testSet.insert(new Real (3));
-		testSet.insert(new Rational (1,3));
-		/*Set insert = new Set();
-		testSet.insert(insert);
-		Set another = new Set();
-		another.insert(new Set (new Real(3)));
-		another.insert(new Real(1));
-		another.insert(new Real(2));
-		another.insert(insert);*/
-		
-		System.out.println(testSet);
-		/*System.out.println(another);
-		System.out.println(testSet.equals(another));*/
-		
-		//testSet.insert(new Rational (4,5));
-		//System.out.println(testSet);
-		System.out.println(testSet.power().size());	
-		 /**/
-		/*Set ratSet1 = new Set();
-		ratSet1.insert(new Rational(1,2));ratSet1.insert(new Set ());ratSet1.insert(new Rational(3,2));ratSet1.insert(new Rational(4,2));ratSet1.insert(new Real(2));
-		Set ratSet2 = new Set();
-		ratSet2.insert(new Rational(3,2));ratSet2.insert(new Rational(1,2));ratSet2.insert(new Real(2));ratSet2.insert(new Set());
-		System.out.println(ratSet1);
-		System.out.println(ratSet2);
-		System.out.println(ratSet1.equals(ratSet2));
-		
-		
-		Set powerSet = new Set();
-		Set subSet1 = new Set(); //empty set
-		Set subSet2 = new Set(); subSet2.insert(new Real(0));	//{0}
-		Set subSet3 = new Set(); subSet3.insert(new Rational(1,1));	//{1}
-		Set subSet4 = new Set(); subSet4.insert(new Real(0)); subSet4.insert(new Rational(1,1)); //{0,1}
-		powerSet.insert(subSet1); powerSet.insert(subSet2); powerSet.insert(subSet3); powerSet.insert(subSet4);
-		
-		
-		Set newSet = new Set();
-		Numeric[] numbers = new Numeric[]{
-				new Real(0),
-				new Rational(1,1),
-			};
-			
-		for (Numeric n : numbers){
-			newSet.insert(n);
-		} 
-		
-		System.out.println(powerSet);
-		Set ans = (newSet.power());
-		System.out.println(ans);
-		System.out.println(powerSet.equals(ans));*/
 		
 		
 	}
