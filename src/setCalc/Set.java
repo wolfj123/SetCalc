@@ -54,7 +54,7 @@ public class Set implements Element,Cloneable {
 			if(c=='{')
 				stack.push(i);
 			
-			if(c=='}'){
+			else if(c=='}'){
 				int startSubSet = stack.pop();
 				if(stack.isEmpty()){
 					subSet = trimmed.substring(startSubSet, i+1);
@@ -62,13 +62,15 @@ public class Set implements Element,Cloneable {
 				}	
 			}
 			
-			if(stack.isEmpty()){  //outside of sub set
+			else if(stack.isEmpty()){  //outside of sub set
 				if(c!=','){
 					element+=c;
 				}
-				else{
-					if(element.length()>0) 
-						insert(createElementFromString(element));
+				if(c==',' | i==trimmed.length()-1){
+					if(element.length()>0) {
+						Element toInsert = createElementFromString(element);
+						insert(toInsert);
+						}
 					element ="";
 				}	
 			}
