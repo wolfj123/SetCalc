@@ -20,7 +20,7 @@ public class Set implements Element,Cloneable {
 		_list.add(e);
 	}
 	
-
+/*
 	public Set(String s){
 		if(!isValidString(s))
 			throw new IllegalArgumentException("Illegal List");
@@ -35,6 +35,48 @@ public class Set implements Element,Cloneable {
 			this.insert(el);	
 		}
 	}
+	*/
+	
+	public Set(String s){
+		this();
+		if(!isValidString(s))
+			throw new IllegalArgumentException("Illegal String");
+
+		Stack<Integer> stack = new Stack<Integer>(); 
+		//List<String> subSetList = new Vector<String>();
+		String subSet = "";
+		String element = "";
+		
+		String trimmed = s.substring(1,s.length()-1);
+		for(int i=0; i<trimmed.length() ; i=i+1){
+			char c = trimmed.charAt(i);
+			
+			if(c=='{')
+				stack.push(i);
+			
+			if(c=='}'){
+				int startSubSet = stack.pop();
+				if(stack.isEmpty()){
+					subSet = trimmed.substring(startSubSet, i+1);
+					insert(new Set(subSet));
+				}	
+			}
+			
+			if(stack.isEmpty()){  //outside of sub set
+				if(c!=','){
+					element+=c;
+				}
+				else{
+					if(element.length()>0) 
+						insert(createElementFromString(element));
+					element ="";
+				}	
+			}
+		}
+	}
+	
+	
+	
 	
 	public static Element createElementFromString(String s){
 		if(Rational.isValidString(s))
