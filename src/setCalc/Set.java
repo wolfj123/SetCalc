@@ -1,5 +1,5 @@
 package setCalc;
-import java.lang.Cloneable;
+
 import java.util.Vector;
 
 import java.util.List;
@@ -19,23 +19,6 @@ public class Set implements Element {
 		this ();
 		_list.add(e);
 	}
-	
-/*
-	public Set(String s){
-		if(!isValidString(s))
-			throw new IllegalArgumentException("Illegal List");
-		
-		_list = new Vector<Element>();
-		
-		StringTokenizer t = new StringTokenizer(s.substring(1, s.length()-1), ",");
-		
-		while(t.hasMoreTokens()){
-			String e = t.nextToken();
-			Element el = createElementFromString(e);
-			this.insert(el);	
-		}
-	}
-	*/
 	
 	public Set(String s){
 		this();

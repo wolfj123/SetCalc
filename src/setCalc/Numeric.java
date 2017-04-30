@@ -1,5 +1,5 @@
 package setCalc;
-import java.lang.Cloneable;
+
 
 public abstract class Numeric implements Element{
 	

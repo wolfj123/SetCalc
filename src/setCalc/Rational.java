@@ -1,5 +1,5 @@
 package setCalc;
-//import java.util.regex.Pattern;
+
 
 public class Rational extends Numeric {
 	private int _a;

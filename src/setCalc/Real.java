@@ -1,5 +1,4 @@
 package setCalc;
-//import java.util.regex.Pattern;
 
 public class Real extends Numeric {
 	private double _value;
