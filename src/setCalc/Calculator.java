@@ -13,7 +13,7 @@ import com.sun.org.apache.regexp.internal.REUtil;
 public class Calculator {
 
 	public static void main(String[] args) {
-		
+		System.out.println("Sets Calculator" +"\n" + "==========================");
 		Scanner MyScanner = new Scanner(System.in);
 	
 		while(true){
@@ -79,7 +79,7 @@ public class Calculator {
 			return "Illegal Parameters";
 		}
 		String [] updateInput = converToSetAndNum (input);
-		if (!isSet(updateInput[0])| (isNumeric(updateInput[1]))){
+		if (!isSet(updateInput[0])| (!isNumeric(updateInput[1]))){
 			return "Illegal Parameters";
 		}
 		Set setInput = createSet(updateInput[0]);
@@ -112,8 +112,19 @@ public class Calculator {
 	}
 	
 	static public String insert(String[] input){
-		// TODO Auto-generated method stub
-		return null;		
+		if ((input.length<1)){ // check if input is a set
+			return "Illegal Parameters";
+		}
+		String [] updateInput = converToSetAndNum (input);
+		if (!isSet(updateInput[0])| (!isNumeric(updateInput[1]))){
+			return "Illegal Parameters";
+		}
+		Set setInput = createSet(updateInput[0]);
+		Numeric num = createNumeric(updateInput[1]);
+		
+		Set ans = setInput.insert(num);
+		
+		return ans.toString();		
 	}
 	
 	static public String union(String[] input){
@@ -139,8 +150,20 @@ public class Calculator {
 	}
 	
 	static public String intersect(String[] input){
-		// TODO Auto-generated method stub
-		return null;		
+		if ((input.length<1)){ // check if input is a set
+			return "Illegal Parameters";
+		}
+		String [] updateInput = convertArrToTwoSets(input);
+		if (!isSet(updateInput[0])| (!isSet(updateInput[1]))){
+			return "Illegal Parameters";
+		}
+		// create sets
+		Set set1 = createSet(updateInput[0]);
+		Set set2 = createSet(updateInput[1]);
+		//intersect
+		Set ans = set1.intersect(set2);
+		
+		return ans.toString();		
 	}
 	
 	static public String difference(String[] input){
@@ -155,8 +178,15 @@ public class Calculator {
 	}
 	
 	static public String power(String[] input){
-		// TODO Auto-generated method stub
-		return null;		
+		String setInput = convertArrToSet(input); // create string of supposed set input
+		if ((input.length<1)||!isSet(setInput)){ // check if input is a set
+			return "Illegal Parameters";
+		}
+		Set powerSet = createSet(setInput);
+		// calculate power 
+		Set ans = powerSet.power();
+		
+		return ans.toString();		
 	}
 	
 	static public String transformAdd(String[] input){
@@ -171,13 +201,29 @@ public class Calculator {
 	}
 	
 	static public String transformMul(String[] input){
-		// TODO Auto-generated method stub
-		return null;		
+		if ((input.length<1)){ // check if input is a set
+			return "Illegal Parameters";
+		}
+		String [] updateInput = converToSetAndNum (input);
+		if (!isSet(updateInput[0])| (!isNumeric(updateInput[1]))){
+			return "Illegal Parameters";
+		}
+		Set setInput = createSet(updateInput[0]);
+		Numeric num = createNumeric(updateInput[1]);
+		//calculate multiplication
+		Set ans = setInput.transformMul(num);
+		
+		return ans.toString();		
 	}
 	
 	static public String help(String[] input){
-		// TODO Auto-generated method stub
-		return null;		
+
+		String print = "size <set>" + "\n" + "contains <set> <set>"+ "\n" + "member <set> <element>" + "\n" +
+		"deepexistance <set> <element> " + "\n" + "equals <element> <element>" + "\n" + "insert <set> <element>" + "\n" +
+				"remove <set> <element>" + "\n" + "union <set> <set>" + "\n" + "intersect <set> <set>" + "\n" +
+		"difference <set> <set>" + "\n" + "power <set>"+ "\n" + "transformAdd <element> <numeric>"+ "\n" +
+				"transformMul <element> <numeric>" + "\n" +"help"+ "\n" +"bonus" + "\n" +"exit";
+		return print;		
 	}
 	
 	static public String bonus(String[] input){
