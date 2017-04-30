@@ -36,6 +36,17 @@ public class Calculator {
 	public static String calc(String instruction){		
 		String[] commands = instruction.trim().split("\\s+");
 
+<<<<<<< HEAD
+		String output = "Unknown command";
+		
+		//attempt calling the method by name
+		try
+		{
+			Class[] args1 = new Class[1];
+	        args1[0] = String[].class;
+			Method m = Calculator.class.getMethod(commands[0], new Class[]{String[].class});
+			output = (String) m.invoke(null, new Object[]{commands});
+=======
 		String output;
 		switch(commands[0].toLowerCase()){
 		case "size":
@@ -106,9 +117,11 @@ public class Calculator {
 			output = "Unknown command";
 			break;
 			
+>>>>>>> 7f684057e414b31f30436fd3f0a496884ab970e8
 		}
 		
 		return output;
+		
 		//attempt calling the method by name
 				/*
 				try

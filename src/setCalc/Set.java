@@ -3,6 +3,7 @@ import java.lang.Cloneable;
 import java.util.Vector;
 
 import java.util.List;
+import java.util.Stack;
 import java.util.StringTokenizer;
 
 
@@ -19,7 +20,7 @@ public class Set implements Element,Cloneable {
 		_list.add(e);
 	}
 	
-
+/*
 	public Set(String s){
 		if(!isValidString(s))
 			throw new IllegalArgumentException("Illegal List");
@@ -33,17 +34,51 @@ public class Set implements Element,Cloneable {
 			Element el = createElementFromString(e);
 			this.insert(el);	
 		}
-		/*
-		String[] content = s.substring(1, s.length()-1) .split(",");
-		
-		if(content.length>0)
-		for(String e : content){
-			Element newElement = createElementFromString(e);
-			if(newElement!=null)
-				insert(newElement);
-		}
-		*/
 	}
+	*/
+	
+	public Set(String s){
+		this();
+		if(!isValidString(s))
+			throw new IllegalArgumentException("Illegal String");
+
+		Stack<Integer> stack = new Stack<Integer>(); 
+		//List<String> subSetList = new Vector<String>();
+		String subSet = "";
+		String element = "";
+		
+		String trimmed = s.substring(1,s.length()-1);
+		for(int i=0; i<trimmed.length() ; i=i+1){
+			char c = trimmed.charAt(i);
+			
+			if(c=='{')
+				stack.push(i);
+			
+			else if(c=='}'){
+				int startSubSet = stack.pop();
+				if(stack.isEmpty()){
+					subSet = trimmed.substring(startSubSet, i+1);
+					insert(new Set(subSet));
+				}	
+			}
+			
+			else if(stack.isEmpty()){  //outside of sub set
+				if(c!=','){
+					element+=c;
+				}
+				if(c==',' | i==trimmed.length()-1){
+					if(element.length()>0) {
+						Element toInsert = createElementFromString(element);
+						insert(toInsert);
+						}
+					element ="";
+				}	
+			}
+		}
+	}
+	
+	
+	
 	
 	public static Element createElementFromString(String s){
 		if(Rational.isValidString(s))
@@ -58,42 +93,48 @@ public class Set implements Element,Cloneable {
 		return null;
 	}
 	
-	/* I guess java doesn't support recursive regex :(
-	static public String getRegEx(){
-		return "(^[{][}]$)|(^[{](a)[}]$)";
-	}
-	*/
-	
+
 	static public  boolean isValidString(String s){
-		
-		if(s == null || s.length()==0) //is empty or null
+		if(s==null || s.length()==0)
 			return false;
 		
-		if(s.contains(",,") | s.contains("{,") | s.contains(",}")) return false;
+		if(!verifyBraces(s))
+			return false;
 		
+		if(s.contains(",,") | s.contains("{,") | s.contains(",}")) 
+			return false;
+		
+		String bracesOff = s.replace("{", "").replace("}", "");
+		String[] commasOff = bracesOff.split(",");
+		for(String el : commasOff){
+			if(!Set.isValidString(el) & !Real.isValidString(el) 
+					& !Rational.isValidString(el) & el.length()!=0){				
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	static private boolean verifyBraces(String s){
+		Stack<Character> stack = new Stack<Character>(); 
 		if(s.charAt(0)!='{' || s.charAt(s.length()-1)!='}') //is enclosed in {}
 			return false;
 		
-		String newS = s.substring(1, s.length()-1);
-		//if((newS.charAt(0)=='{' || newS.charAt(newS.length()-1)=='}'))
-		//	return isValidString(newS);
-		
-		if(newS.length()==0) return true;
-		if(newS.charAt(0)=='{' & newS.charAt(newS.length()-1)=='}') 
-			return isValidString(newS);
-		
-		StringTokenizer t = new StringTokenizer(newS,",");
-		if(!t.hasMoreTokens()) return false;
-		
-		while(t.hasMoreTokens()){
-			String e = t.nextToken();
-			if(!Set.isValidString(e) & !Real.isValidString(e) & !Rational.isValidString(e))
-				return false;
+		for(int i=0; i<s.length(); i=i+1){
+			char c = s.charAt(i);
+			if (c=='{')
+				stack.push(c);
+			if (c=='}'){
+				if(stack.isEmpty())
+					return false;
+				stack.pop();
+			}
 		}
+		
 		
 		return true;
 	}
-
+	
 	
 	public Set insert(Element e) {
 		if (!_list.contains(e)){ // check if an object already exists
