@@ -1,5 +1,5 @@
 package setCalc;
-import java.util.regex.Pattern;
+//import java.util.regex.Pattern;
 
 public class Real extends Numeric {
 	private double _value;
@@ -17,12 +17,12 @@ public class Real extends Numeric {
 	
 	static public String getRegEx(){
 		//non java:  "(^[0-9]\d*+$)|(^[0-9]\d*\.\d+$)"
-		//TODO - fix not writing 0
 		return "(^[0-9]\\d*+$)|(^[0-9]\\d*\\.\\d+$)";
 	}
 
 	static public boolean isValidString(String s){
-		return Pattern.matches(getRegEx(), s);
+		//return Pattern.matches(getRegEx(), s);
+		return s.matches(getRegEx());
 	}
 	
 	@Override
@@ -63,7 +63,7 @@ public class Real extends Numeric {
 		return String.valueOf(_value);
 	}
 	
-	public Object Clone(){
+	public Object clone(){
 		return new Real (_value);
 	}
 

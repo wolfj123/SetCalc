@@ -1,7 +1,7 @@
 package setCalc;
 import java.lang.Cloneable;
 
-public abstract class Numeric implements Element,Cloneable{
+public abstract class Numeric implements Element{
 	
 	public abstract Numeric transformAdd(Numeric n);
 	
@@ -9,7 +9,7 @@ public abstract class Numeric implements Element,Cloneable{
 	
 	public abstract double convertToDouble();
 	
-	public abstract Object Clone();
+	public abstract Object clone();
 	
 	@Override
 	public boolean equals(Object other){

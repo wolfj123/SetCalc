@@ -7,7 +7,7 @@ import java.util.Stack;
 import java.util.StringTokenizer;
 
 
-public class Set implements Element,Cloneable {
+public class Set implements Element {
 	
 	private List<Element> _list;
 
@@ -183,7 +183,7 @@ public class Set implements Element,Cloneable {
 		Set ansClone = new Set (new Set());
 		
 		for (Element e : _list){
-			ansClone = (Set)ans.Clone();
+			ansClone = (Set)ans.clone();
 			for (Element ansE : ansClone._list){
 				Element insert = ((Set)ansE).insert(e);
 				ansClone.insert(insert);
@@ -196,17 +196,17 @@ public class Set implements Element,Cloneable {
 	}
 	
 	
-	public Object Clone (){
+	public Object clone (){
 		Set newSet = new Set();
-		newSet._list = VectorClone();
+		newSet._list = vectorClone();
 		return newSet;
 	}
 	
-	private Vector<Element> VectorClone(){
+	private Vector<Element> vectorClone(){
 		//TODO - fix name convention with refractor
 		Vector<Element> clonedVector = new Vector<Element>();
 		for (Element e : _list){
-			Element add = (Element)e.Clone();
+			Element add = (Element)e.clone();
 			clonedVector.add(add);
 		}
 		return clonedVector;
