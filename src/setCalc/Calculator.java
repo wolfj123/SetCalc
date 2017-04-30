@@ -95,7 +95,6 @@ public class Calculator {
 			break;
 			
 		case "bonus":
-			//TODO
 			try{
 				output = bonus(commands);
 			}
@@ -134,12 +133,10 @@ public class Calculator {
 	
 	
 	static public String size(String[] input){
-
-		String setInput = convertArrToSet(input); // create string of supposed set input
-		if ((input.length<1)||!isSet(setInput)){ // check if input is a set
+		if ((input.length!=2)||!isSet(input[1])){ // check if input is a set
 			return "Illegal Parameters";
 		}
-		Set sizeSet = createSet(setInput);
+		Set sizeSet = createSet(input[1]);
 		Integer size = sizeSet.size();
 		return size.toString();
 	}
@@ -159,16 +156,13 @@ public class Calculator {
 	}
 	
 	static public String member(String[] input){
-		if ((input.length<1)){ // check if input is a set
+		if ((input.length!=3)| (!isSet(input[1])| (!isElement(input[2])))){ // check if input is a set
 			return "Illegal Parameters";
 		}
-		String [] updateInput = converToSetAndNum (input);
-		if (!isSet(updateInput[0])| (!isNumeric(updateInput[1]))){
-			return "Illegal Parameters";
-		}
-		Set setInput = createSet(updateInput[0]);
-		Numeric num = createNumeric(updateInput[1]);
-		if (setInput.member(num)){
+		
+		Set set = createSet(input[1]);
+		Element mem = createElement(input[2]);
+		if (set.member(mem)){
 			return "True";
 		}
 		else {
@@ -191,22 +185,28 @@ public class Calculator {
 	}
 	
 	static public String equals(String[] input){
-		// TODO Auto-generated method stub
-		return null;		
+		if ((input .length<3)| (!isElement(input[1])| (!isElement(input[2])))){
+			return "Illegal Parameters";
+		}
+		Element e1= createElement(input[1]);
+		Element e2= createElement(input[2]);
+		if (e1.equals(e2)){
+			return "True";
+		}
+		else {
+			return "False";
+		}
 	}
 	
 	static public String insert(String[] input){
-		if ((input.length<1)){ // check if input is a set
+		if ((input.length!=3) | (!isElement(input[1]) | (!isElement(input[2]) )) ){ // check if input is a set
 			return "Illegal Parameters";
 		}
-		String [] updateInput = converToSetAndNum (input);
-		if (!isSet(updateInput[0])| (!isNumeric(updateInput[1]))){
-			return "Illegal Parameters";
-		}
-		Set setInput = createSet(updateInput[0]);
-		Numeric num = createNumeric(updateInput[1]);
+
+		Set setInput = createSet(input[1]);
+		Element toInsert = createElement(input[2]);
 		
-		Set ans = setInput.insert(num);
+		Set ans = setInput.insert(toInsert);
 		
 		return ans.toString();		
 	}
@@ -234,16 +234,12 @@ public class Calculator {
 	}
 	
 	static public String intersect(String[] input){
-		if ((input.length<1)){ // check if input is a set
+		if ((input.length!=3) | (!isSet(input[1])) | (!isSet(input[2])) ){ // check if input is a set
 			return "Illegal Parameters";
 		}
-		String [] updateInput = convertArrToTwoSets(input);
-		if (!isSet(updateInput[0])| (!isSet(updateInput[1]))){
-			return "Illegal Parameters";
-		}
-		// create sets
-		Set set1 = createSet(updateInput[0]);
-		Set set2 = createSet(updateInput[1]);
+
+		Set set1 = createSet(input[1]);
+		Set set2 = createSet(input[2]);
 		//intersect
 		Set ans = set1.intersect(set2);
 		
@@ -262,11 +258,11 @@ public class Calculator {
 	}
 	
 	static public String power(String[] input){
-		String setInput = convertArrToSet(input); // create string of supposed set input
-		if ((input.length<1)||!isSet(setInput)){ // check if input is a set
+		
+		if ((input.length!=2)||!isSet(input[1])){ // check if input is a set
 			return "Illegal Parameters";
 		}
-		Set powerSet = createSet(setInput);
+		Set powerSet = createSet(input[1]);
 		// calculate power 
 		Set ans = powerSet.power();
 		
@@ -285,17 +281,15 @@ public class Calculator {
 	}
 	
 	static public String transformMul(String[] input){
-		if ((input.length<1)){ // check if input is a set
+		if ((input.length!=3) | (!isElement(input[1])) | (!isElement(input[2])) ){ // check if input is a set
 			return "Illegal Parameters";
 		}
-		String [] updateInput = converToSetAndNum (input);
-		if (!isSet(updateInput[0])| (!isNumeric(updateInput[1]))){
-			return "Illegal Parameters";
-		}
-		Set setInput = createSet(updateInput[0]);
-		Numeric num = createNumeric(updateInput[1]);
+		
+
+		Element e1 = createElement(input[1]);
+		Numeric e2 = createNumeric(input[2]);
 		//calculate multiplication
-		Set ans = setInput.transformMul(num);
+		Element ans = e1.transformMul(e2);
 		
 		return ans.toString();		
 	}
@@ -361,134 +355,4 @@ public class Calculator {
 		return Set.createElementFromString(s);
 	}
 	
-	
-	// convert input string array into char array with no command
-	static private char[] arrToCharArray (String [] input){
-		
-		String inputStr = "";
-		for (int i=1; i<input.length ; i++){
-			inputStr+=input[i];
-		}
-		
-		
-		char [] ans = new char [inputStr.length()];
-		for (int i= 0; i< inputStr.length(); i++){
-			ans[i]=inputStr.charAt(i);
-		}
-		
-		
-		return ans;
-	}
-
-	// converts string array input into one set String
-	static private String convertArrToSet(String [] input){
-		String ans=new String();
-		char [] charInput = arrToCharArray(input);
-		Stack<Integer> parenthesisStack = new Stack<Integer>(); // 0 - open parenthesis, 1- close parenthesis
-		boolean balanced=true;
-		// go through entire input
-		for (int i=0;i<charInput.length & balanced;i++){
-			ans+=charInput[i];
-			// update parenthesis stack for balance
-			if (charInput[i] =='{'){
-				parenthesisStack.push(0);
-			}
-			if (charInput[i]=='}'){
-				if ((!parenthesisStack.peek().equals(0))){ // check if unbalanced
-					balanced=false;
-					ans ="X";
-				}
-				else{
-					parenthesisStack.pop();
-				}
-			}
-		}
-		if (!parenthesisStack.isEmpty()){
-			return "X";
-		}
-		return ans;
-	}
-	// converts string array input into two sets Strings
-	static private String [] convertArrToTwoSets(String [] input){
-		String [] ans={"",""};
-		char [] charInput = arrToCharArray(input);
-		Stack<Integer> parenthesisStack = new Stack<Integer>(); // 0 - open parenthesis, 1- close parenthesis
-		boolean balanced=true;
-		int setNum =0;
-		// go through input
-		for (int i=0;i<charInput.length & balanced & setNum<ans.length;i++){
-			
-			if (charInput[i] =='{'){
-				parenthesisStack.push(0);
-				ans[setNum]+=charInput[i]; // put opening parenthesis to String
-			}
-			
-			else if (charInput[i] =='}'){
-				ans[setNum]+=charInput[i]; // put opening parenthesis to String
-				if ((!parenthesisStack.peek().equals(0))){
-					balanced=false;
-					ans[setNum] ="X";
-					setNum++; // unbalanced Set go to next one
-				}
-				else{
-					parenthesisStack.pop();
-				}
-			}
-			else {
-				ans[setNum]+=charInput[i];
-			}
-			
-			if (parenthesisStack.isEmpty()){ // stack empty means finish first set
-				setNum++;
-			}
-		}
-
-		
-		return ans;
-	}
-	//converts  string array input into a set and a num Strings
-	static private String [] converToSetAndNum (String [] input){
-		String [] ans={"",""};
-		char [] charInput = arrToCharArray(input);
-		Stack<Integer> parenthesisStack = new Stack<Integer>(); // 0 - open parenthesis, 1- close parenthesis
-		boolean finishedSet=false;
-		int setNum =0;
-		// go through input to create Set String
-		for (int i=0;i<charInput.length  & setNum<ans.length;i++){
-			if (!finishedSet){ // create Set String
-				if (charInput[i] =='{'){
-					parenthesisStack.push(0);
-					ans[setNum]+=charInput[i]; // put opening parenthesis to String
-				}
-				
-				else if (charInput[i] =='}'){
-					ans[setNum]+=charInput[i]; // put opening parenthesis to String
-					if ((!parenthesisStack.peek().equals(0))){
-						finishedSet=false;
-						ans[setNum] ="X";
-						setNum++;
-					}
-					else{
-						parenthesisStack.pop();
-					}
-				}
-				else if (parenthesisStack.isEmpty()){ // stack empty means finish first set
-					finishedSet=true;
-					setNum++;
-					ans[setNum]+=charInput[i];
-				}
-				else {
-					ans[setNum]+=charInput[i];
-				}
-			}
-			else{
-				ans[setNum]+=charInput[i];
-			}
-
-		}
-		
-		
-		
-		return ans;
-	}
 }
