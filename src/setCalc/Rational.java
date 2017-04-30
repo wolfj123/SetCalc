@@ -1,5 +1,5 @@
 package setCalc;
-import java.util.regex.Pattern;
+//import java.util.regex.Pattern;
 
 public class Rational extends Numeric {
 	private int _a;
@@ -31,7 +31,8 @@ public class Rational extends Numeric {
 	}
 	
 	static public boolean isValidString(String s){
-		return Pattern.matches(getRegEx(), s);
+		//return Pattern.matches(getRegEx(), s);
+		return s.matches(getRegEx());
 	}
 	
 	@Override
@@ -101,7 +102,7 @@ public class Rational extends Numeric {
 		return gcd(b,a%b);
 	}
 	
-	public Object Clone(){
+	public Object clone(){
 		
 		return new Rational(_a,_b); 
 	}

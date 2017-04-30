@@ -2,20 +2,12 @@ package setCalc;
 
 import java.io.File;
 import java.io.IOException;
-//import java.lang.reflect.Method;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.Stack;
 import java.util.stream.Stream;
 
-//import com.sun.org.apache.regexp.internal.REUtil;
-
-//import sun.security.mscapi.KeyStore.MY;
-
-//import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
-
-//import java.util.StringTokenizer;
 
 public class Calculator {
 
@@ -37,7 +29,7 @@ public class Calculator {
 		String[] commands = instruction.trim().split("\\s+");
 
 		String output;
-		switch(commands[0].toLowerCase()){
+		switch(commands[0]){
 		case "size":
 			output = size(commands);
 			break;
