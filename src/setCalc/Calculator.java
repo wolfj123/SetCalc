@@ -2,7 +2,7 @@ package setCalc;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Method;
+//import java.lang.reflect.Method;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -95,7 +95,13 @@ public class Calculator {
 			break;
 			
 		case "bonus":
-			output = bonus(commands);
+			//TODO
+			try{
+				output = bonus(commands);
+			}
+			catch (Exception e) {
+				output = e.getMessage();
+			}
 			break;
 			
 		case "exit":
@@ -304,15 +310,11 @@ public class Calculator {
 		return print;		
 	}
 	
-	static public String bonus(String[] input) throws IOException {
-		// TODO Auto-generated method stub
-		//print("test");
-		
-		
+	static public String bonus(String[] input) throws IOException {	
+		//TODO
 	    String content = new String(Files.readAllBytes(Paths.get("bonus.txt")));
-	    System.out.println(content);
 
-		return "test";
+		return content;
 	}
 	
 	static public String exit(String[] input){
