@@ -20,7 +20,7 @@ public class Set implements Element,Cloneable {
 		_list.add(e);
 	}
 	
-
+/*
 	public Set(String s){
 		if(!isValidString(s))
 			throw new IllegalArgumentException("Illegal List");
@@ -35,6 +35,50 @@ public class Set implements Element,Cloneable {
 			this.insert(el);	
 		}
 	}
+	*/
+	
+	public Set(String s){
+		this();
+		if(!isValidString(s))
+			throw new IllegalArgumentException("Illegal String");
+
+		Stack<Integer> stack = new Stack<Integer>(); 
+		//List<String> subSetList = new Vector<String>();
+		String subSet = "";
+		String element = "";
+		
+		String trimmed = s.substring(1,s.length()-1);
+		for(int i=0; i<trimmed.length() ; i=i+1){
+			char c = trimmed.charAt(i);
+			
+			if(c=='{')
+				stack.push(i);
+			
+			else if(c=='}'){
+				int startSubSet = stack.pop();
+				if(stack.isEmpty()){
+					subSet = trimmed.substring(startSubSet, i+1);
+					insert(new Set(subSet));
+				}	
+			}
+			
+			else if(stack.isEmpty()){  //outside of sub set
+				if(c!=','){
+					element+=c;
+				}
+				if(c==',' | i==trimmed.length()-1){
+					if(element.length()>0) {
+						Element toInsert = createElementFromString(element);
+						insert(toInsert);
+						}
+					element ="";
+				}	
+			}
+		}
+	}
+	
+	
+	
 	
 	public static Element createElementFromString(String s){
 		if(Rational.isValidString(s))
@@ -60,7 +104,6 @@ public class Set implements Element,Cloneable {
 		if(s.contains(",,") | s.contains("{,") | s.contains(",}")) 
 			return false;
 		
-		//String[] bracesOff = s.split("\\}\\{");
 		String bracesOff = s.replace("{", "").replace("}", "");
 		String[] commasOff = bracesOff.split(",");
 		for(String el : commasOff){
