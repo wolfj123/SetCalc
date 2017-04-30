@@ -13,6 +13,7 @@ public class Calculator {
 
 	public static void main(String[] args) {
 		System.out.println("Sets Calculator" +"\n" + "==========================");
+		System.out.println(help(null));
 		Scanner MyScanner = new Scanner(System.in);
 	
 		
@@ -263,13 +264,13 @@ public class Calculator {
 	
 	static public String transformAdd(String[] input){
 		//verify input
-		if(input.length!=3 || !isSet(input[1]) || !isNumeric(input[2]))
+		if(input.length!=3 || !isElement(input[1]) || !isNumeric(input[2]))
 			return "Illegal Parameters";
 		//create elements
-		Set set = createSet(input[1]);
+		Element element = createElement(input[1]);
 		Numeric n = createNumeric(input[2]);
 		
-		return set.transformAdd(n).toString();		
+		return element.transformAdd(n).toString();		
 	}
 	
 	static public String transformMul(String[] input){
