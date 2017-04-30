@@ -1,10 +1,17 @@
 package setCalc;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Method;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.Stack;
+import java.util.stream.Stream;
 
 import com.sun.org.apache.regexp.internal.REUtil;
+
+//import sun.security.mscapi.KeyStore.MY;
 
 //import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 
@@ -16,6 +23,7 @@ public class Calculator {
 		System.out.println("Sets Calculator" +"\n" + "==========================");
 		Scanner MyScanner = new Scanner(System.in);
 	
+		
 		while(true){
 			String instruction = MyScanner.nextLine();
 			
@@ -29,7 +37,6 @@ public class Calculator {
 		String[] commands = instruction.trim().split("\\s+");
 
 		String output = "Unknown command";
-		
 		
 		//attempt calling the method by name
 		try
@@ -226,9 +233,14 @@ public class Calculator {
 		return print;		
 	}
 	
-	static public String bonus(String[] input){
+	static public String bonus(String[] input) throws IOException {
 		// TODO Auto-generated method stub
 		//print("test");
+		
+		
+	    String content = new String(Files.readAllBytes(Paths.get("bonus.txt")));
+	    System.out.println(content);
+
 		return "test";
 	}
 	
