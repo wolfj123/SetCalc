@@ -1,93 +1,83 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.2">
-  <zoom_level>8</zoom_level>
+  <zoom_level>4</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>240</x>
-      <y>0</y>
-      <w>192</w>
-      <h>64</h>
+      <x>684</x>
+      <y>112</y>
+      <w>96</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>_Element: Interface_
 --
 + transformAdd(Numeric n) : Element
-+ transformMul(Numeric n) : Element</panel_attributes>
++ transformMul(Numeric n) : Element
++ clone : object</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>264</x>
-      <y>184</y>
-      <w>200</w>
-      <h>144</h>
+      <x>828</x>
+      <y>312</y>
+      <w>100</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>_ Real : Class_
 --
-+ double value
++ _value : double
 --
 + Real(double value)
++ Real(String s)
+
+_+ getRegEx() : String_
+_+ isValidString(String s) : boolean_
 
 + transformAdd(Numeric n) : Real
 + transformMul(Numeric n) : Real //Ariel
 + double convertToDouble() : double
-
-+ toString() : string
-+ equals() : boolean</panel_attributes>
++ get_value() : double
++ set_value(double value)
++ clone : object
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>344</x>
-      <y>96</y>
-      <w>224</w>
-      <h>72</h>
+      <x>856</x>
+      <y>152</y>
+      <w>112</w>
+      <h>40</h>
     </coordinates>
-    <panel_attributes>_ Numeric : Interface_
+    <panel_attributes>_ Numeric : abstract class
 --
 + transformAdd(Numeric n) : Numeric
 + transformMul(Numeric n) : Numeric
-+ double convertToDouble() : double</panel_attributes>
++ double convertToDouble() : double
++ clone : object</panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>368</x>
-      <y>160</y>
-      <w>80</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>80.0;10.0;10.0;30.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>336</x>
-      <y>56</y>
-      <w>136</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;150.0;50.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>480</x>
-      <y>184</y>
-      <w>224</w>
-      <h>224</h>
+      <x>960</x>
+      <y>244</y>
+      <w>112</w>
+      <h>148</h>
     </coordinates>
     <panel_attributes>_ Rational : Class_
 --
-&lt;&lt;get/set&gt;&gt; - a : int
-&lt;&lt;get/set&gt;&gt; - b : int
+&lt;&lt;get/set&gt;&gt; - _a : int
+&lt;&lt;get/set&gt;&gt; - _b : int
 --
 + Rational(int a, int b)
++ Rational(String s)
+
+_+ getRegEx : String_
+_+  isValidString(String s) : boolean_
+
 
 + transformAdd(Numeric n) : Numeric
 + transformMul(Numeric n) : Numeric   //Ariel
@@ -97,39 +87,34 @@
 - transformMul(Real n) : Real
 - transformAdd(Rational n) : Rational
 - transformMul(Rational n) : Rational
-
-+ toString() : string
-+ equals() : boolean
++ getNumerator : int
++ getDenominator : int
+- gcd(int a, int b): int
 
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>464</x>
-      <y>160</y>
-      <w>144</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;160.0;30.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>24</x>
-      <y>168</y>
-      <w>232</w>
-      <h>264</h>
+      <x>540</x>
+      <y>228</y>
+      <w>124</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>_Set: Class_
 --
- - list : List&lt;Element&gt;
+ - _list : List&lt;Element&gt;
 --
-+ Set() : Set
++ Set()
++ Set(Element e)
++Set (String s)
+_+ createElementFromString(String s) : Element_
+_+isValidString(String s) :  boolean_
+_- verifyBraces(String s) : boolean_
 
-+ insert(Element e) : Set   //do not insert duplicates  ///Ariel
+
++ insert(Element e) : Set
 + Set remove(Element e) : Set
 + size() : int
 + union(Set s) : Set
@@ -141,48 +126,180 @@
 + deepExistence(Element e) : boolean
 + transformAdd(Numeric n) : Set
 + transformMul(Numeric n) : Set
-
-+ toString() : string 
-+ equals() : boolean
++ clone :Object
+- vectorClone(): Vector&lt;Element&gt;
  </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>128</x>
-      <y>56</y>
-      <w>208</w>
-      <h>128</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>240.0;10.0;10.0;140.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>64</x>
-      <y>32</y>
-      <w>192</w>
-      <h>152</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;170.0;10.0;10.0;220.0;10.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>32</x>
-      <y>480</y>
-      <w>384</w>
-      <h>152</h>
+      <x>716</x>
+      <y>500</y>
+      <w>192</w>
+      <h>192</h>
     </coordinates>
-    <panel_attributes>_CLI: Main_
+    <panel_attributes>_Calculator: Main_
 --
+_+ main(String[] args)_
+_+ calc(String instructions) : String_
 
-- sanitizeString(string input) : String[]  //remove spaces and seperate it to commands
-- interpertator(String[] input) : void   //constructs and runs Commands
-</panel_attributes>
+_+ insert(String [] input) : String_
+_+ remove((String [] input)) : String_
+_+ size(String [] input) : String_
+_+ union(String [] input) : String_
+_+ intersect(String [] input) : String_
+_+ difference(String [] input) : String_
+_+ power(String [] input) : String_
+_+ contains(String [] input) : String_
+_+ member((String [] input) : String_
+_+ deepExistence(String [] input) : String_
+_+ transformAdd(String [] input) : String_
+_+ transformMul(String [] input) : String_
+_+ equals (String [] input): String_
+_+ help (String [] input): String_
+_+ bonus (String [] input): String_
+_+ exit (String [] input): String_
+_- print (String s) : String_
+_- isSet (String s): boolean_
+_- isElement (String s): boolean_
+_- isNumeric (String s): boolean_
+_- createSet (String s): Set_
+_- createNumeric (String s): Numeric_
+_- createElement (String s): Element_</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>936</x>
+      <y>188</y>
+      <w>80</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;180.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>876</x>
+      <y>188</y>
+      <w>24</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>40.0;10.0;10.0;310.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>728</x>
+      <y>140</y>
+      <w>68</w>
+      <h>368</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>150.0;900.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>592</x>
+      <y>392</y>
+      <w>208</w>
+      <h>116</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>500.0;270.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>784</x>
+      <y>172</y>
+      <w>80</w>
+      <h>336</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;820.0;180.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>144</x>
+      <y>0</y>
+      <w>36</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;70.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>784</x>
+      <y>412</y>
+      <w>96</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;220.0;220.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>788</x>
+      <y>388</y>
+      <w>236</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;280.0;570.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>732</x>
+      <y>140</y>
+      <w>184</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;440.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>592</x>
+      <y>140</y>
+      <w>112</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>260.0;10.0;10.0;220.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>320</y>
+      <w>176</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;420.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>280</y>
+      <w>308</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>750.0;20.0;10.0;20.0</additional_attributes>
   </element>
 </diagram>

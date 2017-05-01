@@ -106,22 +106,7 @@ public class Calculator {
 			
 		}
 		
-		return output;
-		//attempt calling the method by name
-				/*
-				try
-				{
-					Class[] args1 = new Class[1];
-					Method m = Calculator.class.getMethod(commands[0], new Class[]{String[].class});
-					output = (String) m.invoke(null, new Object[]{commands});
-				}
-				catch (Exception e)
-		        {
-					return ("Unknown command " + e.getMessage());
-		        }
-				
-				*/
-		
+		return output;		
 	}
 	
 	
