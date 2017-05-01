@@ -20,7 +20,6 @@ public class Real extends Numeric {
 	}
 
 	static public boolean isValidString(String s){
-		//return Pattern.matches(getRegEx(), s);
 		return s.matches(getRegEx());
 	}
 	
@@ -33,7 +32,7 @@ public class Real extends Numeric {
 	public Real transformMul(Numeric n) {
 		Double ans;
 		if (n instanceof Real)// in case of two real numbers
-			ans=((Real)(n)).get_value()*_value;
+			ans=((Real)(n)).getValue()*_value;
 		else
 		{
 			double num=n.convertToDouble();
@@ -43,14 +42,14 @@ public class Real extends Numeric {
 	}
 	
 	public double convertToDouble(){
-		return get_value();
+		return getValue();
 	}
 	
-	public double get_value(){
+	public double getValue(){
 		return _value;
 	}
 	
-	public void set_value(double value){
+	public void setValue(double value){
 		this._value = value;
 	}
 	

@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
-import java.util.Stack;
 import java.util.stream.Stream;
 
 
@@ -134,7 +133,7 @@ public class Calculator {
 	}
 	
 	static public String member(String[] input){
-		if ((input.length!=3)| (!isSet(input[1])| (!isElement(input[2])))){ // check if input is a set
+		if ((input.length!=3)|| (!isSet(input[1])| (!isElement(input[2])))){ // check if input is a set
 			return "Illegal Parameters";
 		}
 		
@@ -163,7 +162,7 @@ public class Calculator {
 	}
 	
 	static public String equals(String[] input){
-		if ((input .length<3)| (!isElement(input[1])| (!isElement(input[2])))){
+		if ((input .length<3)|| (!isElement(input[1])| (!isElement(input[2])))){
 			return "Illegal Parameters";
 		}
 		Element e1= createElement(input[1]);
@@ -177,7 +176,7 @@ public class Calculator {
 	}
 	
 	static public String insert(String[] input){
-		if ((input.length!=3) | (!isElement(input[1]) | (!isElement(input[2]) )) ){ // check if input is a set
+		if ((input.length!=3) || (!isElement(input[1]) | (!isElement(input[2]) )) ){ // check if input is a set
 			return "Illegal Parameters";
 		}
 
@@ -212,7 +211,7 @@ public class Calculator {
 	}
 	
 	static public String intersect(String[] input){
-		if ((input.length!=3) | (!isSet(input[1])) | (!isSet(input[2])) ){ // check if input is a set
+		if ((input.length!=3) || (!isSet(input[1])) | (!isSet(input[2])) ){ // check if input is a set
 			return "Illegal Parameters";
 		}
 
@@ -259,7 +258,7 @@ public class Calculator {
 	}
 	
 	static public String transformMul(String[] input){
-		if ((input.length!=3) | (!isElement(input[1])) | (!isElement(input[2])) ){ // check if input is a set
+		if ((input.length!=3) || (!isElement(input[1])) | (!isElement(input[2])) ){ // check if input is a set
 			return "Illegal Parameters";
 		}
 		
