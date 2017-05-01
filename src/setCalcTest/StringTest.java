@@ -9,43 +9,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class StringTest {
-
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
-	@Test
-	public void SetString(){
-		Set set1 = new Set("{1,2}");
-		Set set2 = new Set(); set2.insert(new Real(1)); set2.insert(new Real(2));
-		
-		Assert.assertEquals(set2, set1);
-	}
-	
-	@Test
-	public void RealString(){
-		Real real1 = new Real("01.87");
-		Real real2 = new Real(1.87);
-		
-		Assert.assertEquals(real2, real1);
-	}
-	
-	@Test
-	public void RationalString(){
-		Rational rational1 = new Rational("40/80");
-		Rational rational2 = new Rational(10,20);
-		
-		Assert.assertEquals(rational2, rational1);
-	}
 	
 	@Test
 	public void SetValidString() {
 		String[] correctStrings = new String[] {
-			"(1/2,3/4,{{4},{}},{67/4}}",
+			"{1/2,3/4,{{4},{}},{67/4}}",
 			"{{},{4,5},{1/2,{3/5}}}",
 			"{{{},3/2}}",
 			"{}",
@@ -73,6 +41,33 @@ public class StringTest {
 			Assert.assertEquals("Did not recgonize "+ s,false, Set.isValidString(s));
 		}
 	}
+
+	
+	
+	@Test
+	public void SetString(){
+		Set set1 = new Set("{1,2}");
+		Set set2 = new Set(); set2.insert(new Real(1)); set2.insert(new Real(2));
+		
+		Assert.assertEquals(set2, set1);
+	}
+	
+	@Test
+	public void RealString(){
+		Real real1 = new Real("01.87");
+		Real real2 = new Real(1.87);
+		
+		Assert.assertEquals(real2, real1);
+	}
+	
+	@Test
+	public void RationalString(){
+		Rational rational1 = new Rational("40/80");
+		Rational rational2 = new Rational(10,20);
+		
+		Assert.assertEquals(rational2, rational1);
+	}
+	
 
 	@Test
 	public void RealSValidtring() {
@@ -131,5 +126,6 @@ public class StringTest {
 			Assert.assertEquals("Did not recgonize "+ s,false, Rational.isValidString(s));
 		}
 	}
+	
 
 }
