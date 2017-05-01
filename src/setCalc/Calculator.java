@@ -107,21 +107,6 @@ public class Calculator {
 		}
 		
 		return output;
-		//attempt calling the method by name
-				/*
-				try
-				{
-					Class[] args1 = new Class[1];
-					Method m = Calculator.class.getMethod(commands[0], new Class[]{String[].class});
-					output = (String) m.invoke(null, new Object[]{commands});
-				}
-				catch (Exception e)
-		        {
-					return ("Unknown command " + e.getMessage());
-		        }
-				
-				*/
-		
 	}
 	
 	
@@ -149,7 +134,7 @@ public class Calculator {
 	}
 	
 	static public String member(String[] input){
-		if ((input.length!=3)| (!isSet(input[1])| (!isElement(input[2])))){ // check if input is a set
+		if ((input.length!=3)|| (!isSet(input[1])| (!isElement(input[2])))){ // check if input is a set
 			return "Illegal Parameters";
 		}
 		
@@ -178,7 +163,7 @@ public class Calculator {
 	}
 	
 	static public String equals(String[] input){
-		if ((input .length<3)| (!isElement(input[1])| (!isElement(input[2])))){
+		if ((input .length<3)|| (!isElement(input[1])| (!isElement(input[2])))){
 			return "Illegal Parameters";
 		}
 		Element e1= createElement(input[1]);
@@ -192,7 +177,7 @@ public class Calculator {
 	}
 	
 	static public String insert(String[] input){
-		if ((input.length!=3) | (!isElement(input[1]) | (!isElement(input[2]) )) ){ // check if input is a set
+		if ((input.length!=3) || (!isElement(input[1]) | (!isElement(input[2]) )) ){ // check if input is a set
 			return "Illegal Parameters";
 		}
 
@@ -227,7 +212,7 @@ public class Calculator {
 	}
 	
 	static public String intersect(String[] input){
-		if ((input.length!=3) | (!isSet(input[1])) | (!isSet(input[2])) ){ // check if input is a set
+		if ((input.length!=3) || (!isSet(input[1])) | (!isSet(input[2])) ){ // check if input is a set
 			return "Illegal Parameters";
 		}
 
@@ -274,7 +259,7 @@ public class Calculator {
 	}
 	
 	static public String transformMul(String[] input){
-		if ((input.length!=3) | (!isElement(input[1])) | (!isElement(input[2])) ){ // check if input is a set
+		if ((input.length!=3) || (!isElement(input[1])) | (!isElement(input[2])) ){ // check if input is a set
 			return "Illegal Parameters";
 		}
 		

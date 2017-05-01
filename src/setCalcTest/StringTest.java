@@ -45,6 +45,7 @@ public class StringTest {
 	@Test
 	public void SetValidString() {
 		String[] correctStrings = new String[] {
+			"(1/2,3/4,{{4},{}},{67/4}}",
 			"{{},{4,5},{1/2,{3/5}}}",
 			"{{{},3/2}}",
 			"{}",
