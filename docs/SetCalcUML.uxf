@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.2">
-  <zoom_level>8</zoom_level>
+  <zoom_level>6</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>352</x>
-      <y>24</y>
-      <w>192</w>
-      <h>64</h>
+      <x>348</x>
+      <y>0</y>
+      <w>144</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
 _Element:_
@@ -20,10 +20,10 @@ _Element:_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>544</x>
-      <y>328</y>
-      <w>200</w>
-      <h>208</h>
+      <x>492</x>
+      <y>240</y>
+      <w>150</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>_ Real : Class_
 --
@@ -36,7 +36,7 @@ _+ getRegEx() : String_
 _+ isValidString(String s) : boolean_
 
 + transformAdd(Numeric n) : Real
-+ transformMul(Numeric n) : Real //Ariel
++ transformMul(Numeric n) : Real
 + double convertToDouble() : double
 + get_value() : double
 + set_value(double value)
@@ -47,10 +47,10 @@ _+ isValidString(String s) : boolean_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>624</x>
-      <y>176</y>
-      <w>224</w>
-      <h>80</h>
+      <x>552</x>
+      <y>126</y>
+      <w>168</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>_Numeric *_
 --
@@ -63,10 +63,10 @@ _+ isValidString(String s) : boolean_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>800</x>
-      <y>312</y>
-      <w>224</w>
-      <h>304</h>
+      <x>684</x>
+      <y>228</y>
+      <w>168</w>
+      <h>228</h>
     </coordinates>
     <panel_attributes>_ Rational : Class_
 --
@@ -81,7 +81,7 @@ _+  isValidString(String s) : boolean_
 
 
 + transformAdd(Numeric n) : Numeric
-+ transformMul(Numeric n) : Numeric   //Ariel
++ transformMul(Numeric n) : Numeric
 + convertToDouble() : double
 
 - transformAdd(Real n) : Real
@@ -98,10 +98,10 @@ _+  isValidString(String s) : boolean_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>128</x>
-      <y>208</y>
-      <w>248</w>
-      <h>336</h>
+      <x>180</x>
+      <y>150</y>
+      <w>186</w>
+      <h>252</h>
     </coordinates>
     <panel_attributes>_Set: Class_
 --
@@ -135,10 +135,10 @@ _- verifyBraces(String s) : boolean_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>344</x>
-      <y>624</y>
-      <w>384</w>
-      <h>384</h>
+      <x>342</x>
+      <y>462</y>
+      <w>288</w>
+      <h>288</h>
     </coordinates>
     <panel_attributes>_Calculator: Main_
 --
@@ -173,10 +173,10 @@ _- createElement (String s): Element_</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>824</x>
-      <y>248</y>
-      <w>24</w>
-      <h>80</h>
+      <x>702</x>
+      <y>180</y>
+      <w>18</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
@@ -184,10 +184,10 @@ _- createElement (String s): Element_</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>680</x>
-      <y>248</y>
-      <w>24</w>
-      <h>96</h>
+      <x>594</x>
+      <y>180</y>
+      <w>18</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
@@ -195,10 +195,10 @@ _- createElement (String s): Element_</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>424</x>
-      <y>80</y>
-      <w>24</w>
-      <h>560</h>
+      <x>402</x>
+      <y>54</y>
+      <w>18</w>
+      <h>420</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;680.0;10.0;10.0</additional_attributes>
@@ -206,10 +206,10 @@ _- createElement (String s): Element_</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>232</x>
-      <y>536</y>
-      <w>128</w>
-      <h>240</h>
+      <x>258</x>
+      <y>396</y>
+      <w>96</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>140.0;280.0;10.0;280.0;10.0;10.0</additional_attributes>
@@ -217,10 +217,10 @@ _- createElement (String s): Element_</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>464</x>
-      <y>224</y>
-      <w>176</w>
-      <h>416</h>
+      <x>432</x>
+      <y>162</y>
+      <w>132</w>
+      <h>312</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;500.0;10.0;10.0;200.0;10.0</additional_attributes>
@@ -228,10 +228,10 @@ _- createElement (String s): Element_</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>632</x>
-      <y>528</y>
-      <w>24</w>
-      <h>112</h>
+      <x>558</x>
+      <y>390</y>
+      <w>18</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
@@ -239,10 +239,10 @@ _- createElement (String s): Element_</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>720</x>
-      <y>608</y>
-      <w>208</w>
-      <h>160</h>
+      <x>624</x>
+      <y>450</y>
+      <w>156</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;180.0;240.0;180.0;240.0;10.0</additional_attributes>
@@ -250,10 +250,10 @@ _- createElement (String s): Element_</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>488</x>
-      <y>80</y>
-      <w>152</w>
-      <h>144</h>
+      <x>450</x>
+      <y>54</y>
+      <w>114</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;160.0;170.0;160.0</additional_attributes>
@@ -261,10 +261,10 @@ _- createElement (String s): Element_</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>368</x>
-      <y>80</y>
-      <w>48</w>
-      <h>232</h>
+      <x>360</x>
+      <y>54</y>
+      <w>36</w>
+      <h>174</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>40.0;10.0;40.0;270.0;10.0;270.0</additional_attributes>
