@@ -26,12 +26,10 @@ public class Rational extends Numeric {
 	
 	static public String getRegEx(){
 		//non java: "^[0-9]+\d*[\/][1-9]+\d*$"
-		
 		return "^[0-9]+\\d*[\\/][1-9]+\\d*$";
 	}
 	
 	static public boolean isValidString(String s){
-		//return Pattern.matches(getRegEx(), s);
 		return s.matches(getRegEx());
 	}
 	
@@ -85,6 +83,18 @@ public class Rational extends Numeric {
 	
 	public int getDenominator(){
 		return _b;
+	}
+	
+	public void setNumerator(int a){
+		int gcd = gcd(a,_b);
+		_a = a/gcd;
+		_b = _b/gcd;
+	}
+	
+	public void setDenominator(int b){
+		int gcd = gcd(_a,b);
+		_a = _a/gcd;
+		_b = b/gcd;
 	}
 	
 	
