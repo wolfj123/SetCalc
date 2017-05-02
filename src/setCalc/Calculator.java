@@ -1,8 +1,13 @@
 package setCalc;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.stream.Stream;
@@ -283,8 +288,12 @@ public class Calculator {
 	
 	static public String bonus(String[] input) throws IOException {	
 		//TODO
-	    String content = new String(Files.readAllBytes(Paths.get("bonus.txt")));
-
+		BufferedReader file = new BufferedReader (new InputStreamReader(Calculator.class.getResourceAsStream("bonus.txt")));
+		String content="";
+		String line;
+		while ((line= file.readLine())!=null){
+			content+=line+"\n";
+		}
 		return content;
 	}
 	
