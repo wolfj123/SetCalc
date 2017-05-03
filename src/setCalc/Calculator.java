@@ -280,7 +280,7 @@ public class Calculator {
 	static public String help(String[] input){
 
 		String print = "size <set>" + "\n" + "contains <set> <set>"+ "\n" + "member <set> <element>" + "\n" +
-		"deepexistence <set> <element> " + "\n" + "equals <element> <element>" + "\n" + "insert <set> <element>" + "\n" +
+		"deepexistance <set> <element> " + "\n" + "equals <element> <element>" + "\n" + "insert <set> <element>" + "\n" +
 				"remove <set> <element>" + "\n" + "union <set> <set>" + "\n" + "intersect <set> <set>" + "\n" +
 		"difference <set> <set>" + "\n" + "power <set>"+ "\n" + "transformAdd <element> <numeric>"+ "\n" +
 				"transformMul <element> <numeric>" + "\n" +"help"+ "\n" +"bonus" + "\n" +"exit";
