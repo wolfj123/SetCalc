@@ -24,9 +24,7 @@ public class Calculator {
 		while(true){
 			String instruction = MyScanner.nextLine();
 			
-			//String output = calc(instruction);
 			calc(instruction);
-			//print(output);
 		}
 	}
 	
