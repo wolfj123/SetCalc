@@ -33,7 +33,6 @@ public class Calculator {
 		switch(commands[0]){
 		case "size":
 			output = size(commands);
-			print(output);
 			break;
 			
 		case "contains":
