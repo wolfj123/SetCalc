@@ -19,19 +19,21 @@ public class Calculator {
 		while(true){
 			String instruction = MyScanner.nextLine();
 			
-			String output = calc(instruction);
-			print(output);
+			//String output = calc(instruction);
+			calc(instruction);
+			//print(output);
 		}
 	}
 	
 	
-	public static String calc(String instruction){		
+	public static void calc(String instruction){		
 		String[] commands = instruction.trim().split("\\s+");
 
 		String output;
 		switch(commands[0]){
 		case "size":
 			output = size(commands);
+			print(output);
 			break;
 			
 		case "contains":
@@ -105,7 +107,7 @@ public class Calculator {
 			
 		}
 		
-		return output;		
+		print(output);	
 	}
 	
 	
