@@ -24,17 +24,18 @@ public class Calculator {
 		while(true){
 			String instruction = MyScanner.nextLine();
 			
-			String output = calc(instruction);
-			print(output);
+			//String output = calc(instruction);
+			calc(instruction);
+			//print(output);
 		}
 	}
 	
 	
-	public static String calc(String instruction){		
+	public static void calc(String instruction){		
 		String[] commands = instruction.trim().split("\\s+");
 
 		String output;
-		switch(commands[0]){
+		switch(commands[0].toLowerCase()){
 		case "size":
 			output = size(commands);
 			break;
@@ -47,8 +48,8 @@ public class Calculator {
 			output = member(commands);
 			break;
 			
-		case "deepexistance":
-			output = deepexistance(commands);
+		case "deepexistence":
+			output = deepexistence(commands);
 			break;
 			
 		case "equals":
@@ -79,11 +80,11 @@ public class Calculator {
 			output = power(commands);
 			break;
 			
-		case "transformAdd":
+		case "transformadd":
 			output = transformAdd(commands);
 			break;
 			
-		case "transformMul":
+		case "transformmul":
 			output = transformMul(commands);
 			break;
 			
@@ -110,7 +111,7 @@ public class Calculator {
 			
 		}
 		
-		return output;		
+		print(output);	
 	}
 	
 	
@@ -152,7 +153,7 @@ public class Calculator {
 		}
 	}
 	
-	static public String deepexistance(String[] input){
+	static public String deepexistence(String[] input){
 		//verify input
 		if(input.length!=3 || !isSet(input[1]) || !isElement(input[2]))
 			return "Illegal Parameters";
