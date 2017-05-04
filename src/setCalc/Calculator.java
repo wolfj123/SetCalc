@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -286,11 +287,12 @@ public class Calculator {
 	}
 	
 	static public String bonus(String[] input) throws IOException {	
-		//TODO
-		BufferedReader file = new BufferedReader (new InputStreamReader(Calculator.class.getResourceAsStream("bonus.txt")));
+		InputStream in = Calculator.class.getResourceAsStream("/bonus.txt"); 
+		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+		
 		String content="";
 		String line;
-		while ((line= file.readLine())!=null){
+		while ((line= reader.readLine())!=null){
 			content+=line+"\n";
 		}
 		return content;
